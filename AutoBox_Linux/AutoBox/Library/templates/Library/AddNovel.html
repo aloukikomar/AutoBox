@@ -1,0 +1,27 @@
+<div class="formLib">
+    <form>
+        <h3><b>Novel Name:</b><input type="text"></h3>
+        <br>
+        <div class="row">
+            <div class="col-lg-5">
+                <h4><b>List of Chapters:</b></h4>
+                <div class="DisplayTab">
+                    {%for Chapter in ChapterAvailable%}
+                    <div class="DisplayTabOptions">
+                        <input type="checkbox" id="{{Chapter}}" onclick="ToggleName('{{Chapter}}')">{{Chapter}}
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <h4><b>Current Index Created</b></h4>
+                <div class="DisplayTab">
+                    <table class="table table-striped" id="SelctedChapters">
+                    </table>
+
+                </div>
+            </div><br><br>
+            <input type="submit" class="AddOption" value="Add Novel">
+        </div>
+    </form>
+</div>

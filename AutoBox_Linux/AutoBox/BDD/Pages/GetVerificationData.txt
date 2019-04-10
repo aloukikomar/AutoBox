@@ -1,0 +1,4 @@
+Continue
+Upload FetchServerInstenceShell From Shells
+Bash FetchServerInstence WithArgs $HitTime
+Store @NFAPI As ApiData
