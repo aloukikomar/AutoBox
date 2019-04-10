@@ -1,4 +1,0 @@
-Continue
-LookFor HitSearch and Click
-Store @TimeStamp() As HitTime
-PrintContent $HitTime

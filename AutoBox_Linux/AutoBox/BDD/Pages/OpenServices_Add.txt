@@ -1,5 +1,0 @@
-include UserData.json,Xpath.json NEW
-Continue
-LookFor ServiceIcon and Click
-LookFor AddOption and MoveTo
-LookFor NormalOption and Click

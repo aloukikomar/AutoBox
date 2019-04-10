@@ -1,5 +1,0 @@
-OpenNetVisionWeb
-LoginCavisson
-NVMainPage
-NVSPApageP1
-LogoutCavisson

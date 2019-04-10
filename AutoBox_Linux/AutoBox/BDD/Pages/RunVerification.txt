@@ -1,3 +1,0 @@
-Continue
-Bash VarificationShell
-Confirm VerificationData With RequiredData

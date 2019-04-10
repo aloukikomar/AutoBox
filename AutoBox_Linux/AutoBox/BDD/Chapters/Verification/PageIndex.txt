@@ -1,4 +1,0 @@
-ConnectToMachine
-RunVerification
-RevertNSChanges
-RevertNOChanges

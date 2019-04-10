@@ -1,6 +1,0 @@
-OpenNetStormWeb
-LoginCavisson
-HomeGuiNetStormTask1
-ScenariosGuiNetStormTask1
-EditScenarioAndRun
-LogoutCavisson

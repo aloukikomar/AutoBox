@@ -1,3 +1,0 @@
-Continue
-LookFor SideBarButtonScenarios and Click
-LookFor DropDownOptionScenarios and Click

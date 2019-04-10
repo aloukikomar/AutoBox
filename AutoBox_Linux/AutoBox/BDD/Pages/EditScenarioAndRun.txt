@@ -1,6 +1,0 @@
-Continue
-LookFor AddGroupButton and Click
-LookFor GroupNameField and Enter GroupName
-LookFor ScriptDropDown and Click
-LookFor AutoBoxOption and Click
-LookFor OKButton and Click

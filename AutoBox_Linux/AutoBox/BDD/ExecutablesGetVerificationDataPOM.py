@@ -1,3 +1,0 @@
-
-    Machine.UploadFile("")
-    Comman.Store()

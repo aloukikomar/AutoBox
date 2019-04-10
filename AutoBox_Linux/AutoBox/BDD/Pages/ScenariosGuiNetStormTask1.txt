@@ -1,6 +1,0 @@
-Continue
-LookFor CreateButton and Click
-LookFor ProjectDropOption and Click
-LookFor SelectDefault and Click
-LookFor ScenarioNameField and Enter NewScenarioName
-LookFor NextButton and Click

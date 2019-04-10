@@ -1,3 +1,0 @@
-Continue
-Bash RevertNSShell
-Confirm ReverstSuccess With RequiredRevert

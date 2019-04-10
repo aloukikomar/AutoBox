@@ -1,3 +1,0 @@
-Continue
-LookFor LogOut and Click
-Close WebApplication
