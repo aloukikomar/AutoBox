@@ -8,6 +8,8 @@ from django.shortcuts import redirect
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 PagePath=dir_path+"/../BDD/Pages/"
+ChapterPath=dir_path+"/../BDD/Chapters/"
+
 PageList=os.listdir(PagePath)
 
 filedata="No File Selected"
@@ -25,17 +27,17 @@ def home(request):
 	return render(request,'Library/home.html',{'filedata':filedata,'outputfile':outputfile,'PageList':PageList})
 
 def AddNovelForm(request):
-    	ChapterAvailable=os.listdir("/home/automation/webapps/AutoBox/BDD/Chapters")
+    	ChapterAvailable=os.listdir(ChapterPath)
     	print(ChapterAvailable)
     	return render(request,'Library/AddNovel.html',{'ChapterAvailable':ChapterAvailable})
 
 def AddChapterForm(request):
-    	ChapterAvailable=os.listdir("/home/automation/webapps/AutoBox/BDD/Chapters")
+    	ChapterAvailable=os.listdir(ChapterPath)
     	print(ChapterAvailable)
     	return render(request,'Library/AddChapters.html',{'ChapterAvailable':ChapterAvailable,'PageList':PageList})
 
 def AddPageForm(request):
-    	ChapterAvailable=os.listdir("/home/automation/webapps/AutoBox/BDD/Chapters")
+    	ChapterAvailable=os.listdir(ChapterPath)
     	print(ChapterAvailable)
     	return render(request,'Library/AddPage.html',{'ChapterAvailable':ChapterAvailable})
 # Create your views here.
