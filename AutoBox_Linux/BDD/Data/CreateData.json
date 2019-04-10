@@ -1,0 +1,32 @@
+{
+    "line": {
+        "Open": "    driver=Comman.OpenSystem(\"variable\",driver)",
+        "LookFor": "    element=SeleniumFunction.FindElement(driver,\"variable\",\"xpath\")",
+        "Enter": "    SeleniumFunction.SendData(element,\"variable\")",
+        "Click": "    SeleniumFunction.Click(element)",
+        "Variable": "tmp",
+        "Run":"    driver=Comman.Driver(\"variable\")",
+        "Close":"    SeleniumFunction.CloseDriver(driver)",
+        "MoveTo":"    SeleniumFunction.MoveTo(driver,element)",
+        "WriteHtml":"    SeleniumFunction.WriteHtml(driver,element,\"variable\")",
+        "include":"    Comman.Wait5()",
+        "Bash":"    Machine.BashShell(driver,\"variable\")",
+        "StoreText":"   Selenium.Store(element)",
+        "Store":"    Comman.Store(\"variable\")",
+        "Perform":"    Machine.perform(driver,\"variable\")",
+        "Upload":"    Machine.UploadFile(\"variable\")",
+        "PrintContent":"    Comman.PrintContent(\"variable\")",
+        "PsudoStore":"    PsudoStore=variable",
+        "SwitchTab":"    SeleniumFunction.SwitchTab(driver)",
+        "Wait5":"    Comman.Wait5()"
+    },
+    "pera": {
+        "test": {
+            "webapplication": "driver=Comman.Driver(\"variable\")",
+            "Machine": "Connect=Comman.Driver(\"variable\")"
+        },
+        "Start": "import sys\nsys.path.append(\"/home/automation/webapps/AutoBox/BDD\")\nfrom Core import SeleniumFunction,Comman,Machine,PythonFunction_lib\n\ndef main(driver):",
+        "Continue": "import sys\nsys.path.append(\"/home/automation/webapps/AutoBox/BDD\")\nfrom Core import SeleniumFunction,Comman,Machine,PythonFunction_lib\n\ndef main(driver):",
+        "":""
+    }
+}

@@ -1,0 +1,546 @@
+{% extends "Dashboard/header.html" %} {% block content %}
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+<style>
+    #snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: rgba(40, 116, 40, 0.95);
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+        #sidebarK {
+        padding: 15px;
+        top: 50px;
+        height: 100%;
+        width: 210px;
+        position: fixed;
+        right: 0px;
+        overflow: auto;
+        background-color: rgba(219, 219, 219, 0.562)
+    }
+    
+    .nopad {
+        padding: 0px !important;
+    }
+    
+    .TC {
+        padding: 1%;
+        width: 100%;
+        background-color: rgb(252, 252, 252);
+        box-shadow: 0px 1px 1px rgb(21, 19, 24);
+    }
+    
+    .incheck {
+        margin: 2px;
+    }
+    
+    .list {
+        height: 420px;
+        overflow: auto;
+    }
+    
+    .console {
+        height: 420px;
+        overflow: auto;
+        background-color: black;
+        color: white;
+    }
+    
+    .stop {
+        color: white;
+        margin: 1px;
+        height: 30px;
+        width: 100%;
+        background-color: #CD0A05;
+        border-style: none;
+    }
+    
+    .stop:hover {
+        background: linear-gradient(#CD0A05, #FF0F05);
+        transition: .15s;
+        border: 1px solid white;
+        transform: scale(1.001, 1.1);
+    }
+    
+    .start {
+        color: white;
+        margin: 1px;
+        height: 30px;
+        width: 100%;
+        background-color: #228E01;
+        border-style: none;
+    }
+    
+    .start:hover {
+        background: linear-gradient(#228E01, #0DDD05);
+        transition: .15s;
+        border: 1px solid white;
+        transform: scale(1.001, 1.1);
+    }
+    
+    .pan {
+        padding: 1%;
+    }
+    
+    .Libpanel {
+        margin: 2%;
+        height: 450px;
+    }
+    
+    .border {
+        border: 3px grey solid;
+        border-radius: 10px;
+    }
+    
+    .LibOp {
+        width: 100%;
+        padding: 1%;
+        height: 150px;
+        padding-top: 10%;
+    }
+    
+    .Liboptions {
+        list-style-type: none;
+        width: 100%;
+        height: 30px;
+        padding: 3%;
+    }
+    
+    .Liboptions:hover {
+        color: rgb(0, 174, 255);
+        border-left: 3px solid #222;
+        transition: .35s;
+        transform: scale(1.001, 1.1)
+    }
+    
+    .discription {
+        height: 235px;
+    }
+    
+    .DisplayTab {
+        width: 100%;
+        height: 200px;
+        border: 1px solid rgba(34, 34, 34, 0.295);
+        overflow: auto;
+    }
+    
+    .DisplayTabOptions {
+        position: static;
+        width: 100%;
+        height: 30px;
+    }
+    
+    .DisplayTabOptions:hover {
+        color: rgb(0, 174, 255);
+        font-weight: bold;
+        transition: .15s;
+    }
+    
+    .formLib {
+        padding: 10px;
+        margin: 20px;
+    }
+    
+    .AddOption {
+        color: white;
+        margin: 2px;
+        margin-top: 1%;
+        height: 30px;
+        width: 100%;
+        background-color: #222;
+        border-style: none;
+    }
+    
+    .AddOption:hover {
+        background: linear-gradient(#222, grey);
+        transition: .15s;
+        border: 1px solid white;
+        
+    }
+    .DisplayAction{
+        color: orange;
+        padding: 5px;
+    }
+    .DisplayString{
+        color: red;
+        padding: 5px;
+    }
+    .DisplayFunction{
+        color: greenyellow;
+        padding: 5px;
+    }
+    .normalBasic{
+        padding: 5px;
+    }
+    .DisplayVariable{
+        padding: 5px;
+        color: blue;
+    }
+    #PageList{
+        padding: 0%;
+    }
+    .Close:hover{
+        color:#FF0F05;
+    }
+    .Edit:hover{
+        color: blue;
+    }
+    .darkBasic{
+        padding: 5px;
+        
+        color: rgb(167, 166, 166);
+    }
+    .material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+    </style>
+<div id="sidebarK" class="">
+    help:
+    <marquee>Help is always given to those who ask for it.</marquee>
+</div>
+<div class="HAD">
+    <h3><b>Library</b></h3>
+</div>
+
+<ul class="nav nav-tabs nav-justified">
+    <li class="nav-item active"><a class="nav-link active" data-toggle="tab" href="#Novel">Novel</a></li>
+    <li class="nav-item "><a class="nav-link"data-toggle="tab" href="#Chapters">Chapters</a></li>
+    <li class="nav-item "><a class="nav-link"data-toggle="tab" href="#Pages">Pages</a></li>
+    <li class="nav-item "><a class="nav-link" data-toggle="tab" href="#View">View</a></li>
+    <li class="nav-item "><a class="nav-link" data-toggle="tab" href="#Data">Data</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="Novel" class="pan tab-pane fade in show active">
+        {% include 'Library/Novels.html' %}
+    </div>
+    <div id="Chapters" class="pan tab-pane fade">
+        {% include 'Library/Chapters.html' %}
+    </div>
+    <div id="Pages" class="pan tab-pane fade">
+        {% include 'Library/Pages.html' %}
+    </div>
+    <div id="View" class="pan tab-pane fade">
+        {% include 'Library/View.html' %}
+    </div>
+    <div id="Data" class="pan tab-pane fade">
+        {% include 'Library/Data.html' %}
+    </div >
+    
+    <div id="snackbar">
+Somthing went wrong
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+  $(".HAD").click(function(){
+    $(".HAD").hide();
+  });
+});
+    function ToggleName(content) {
+        var x = document.getElementById(content);
+        if (x.checked) {
+            var elem1 = document.createElement('tr');
+            elem1.setAttribute("id", content + "R")
+            document.getElementById("SelctedChapters").appendChild(elem1);
+        } else {
+            var elem1 = document.getElementById(content + "R");
+            document.removeChild(elem1);
+        }
+
+    }
+    function toproceed() {
+    var x = document.getElementById("ActionInput").value;
+    console.log(x+"works");
+    if (x != "Start") {
+        document.getElementById("step2").classList.remove("hides");
+            document.getElementById("MainData").classList.remove("hides");
+            document.getElementById("SubData").classList.remove("hides");
+    } else {
+        if (document.getElementById("step2").classList.contains("hides")){
+                console.log("No need to add");
+            }    
+            else{
+                document.getElementById("step2").classList.add("hides"); 
+                document.getElementById("MainData").classList.add("hides");
+                document.getElementById("SubData").classList.add("hides");
+            }     
+    }
+
+}
+    function AddNovel() {
+        var urldata = "/Library/AddNovelForm"
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("LibForm").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", urldata, true);
+        xhttp.send();
+    }
+    function AddChapter() {
+        var urldata = "/Library/AddChapterForm"
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("LibForm3").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", urldata, true);
+        xhttp.send();
+    }
+    function AddPage() {
+        var urldata = "/Library/AddPageForm"
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("LibForm2").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", urldata, true);
+        xhttp.send();
+    }
+
+    function snackbar(choice) { 
+        if ( choice == "1"){
+            var msg="Action feild is not valid";
+        }
+        else
+        {
+            if(choice == "3")
+            {
+                var msg="Page Name already in use";
+
+            }else{
+              var msg="added succesfully";  
+            }
+            
+        }
+  var x = document.getElementById("snackbar");
+  console.log(x);
+  x.innerHTML = msg;
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function WritePage(){
+    var x = document.getElementById("PageInput").value;
+    var ChapIterations=document.getElementById("ChapIterations").value;
+        if (x != ''){
+            var elem2 = document.createElement('li');
+            elem2.setAttribute("class", "Pagecontentlist");
+
+            var Edit = document.createElement('i');
+            Edit.setAttribute("class", "Edit darkBasic material-icons");
+            Edit.textContent="create";
+            elem2.appendChild(Edit);
+
+            var Close = document.createElement('i');
+            Close.setAttribute("class", "Close");
+            Close.setAttribute("class", "darkBasic Close material-icons");
+            Close.textContent="cancel";
+            elem2.appendChild(Close);
+
+            var ChapterName= document.createElement('span');
+            ChapterName.setAttribute("class","DisplayAction");
+            ChapterName.textContent=x;
+            elem2.appendChild(ChapterName);
+
+            var Iteration= document.createElement('span');
+            Iteration.setAttribute("class","DisplayFunction");
+            Iteration.textContent=ChapIterations;
+            elem2.appendChild(Iteration);
+
+
+            document.getElementById("ChapterList").appendChild(elem2);
+
+        }
+}
+    function WriteLine(){
+        var x = document.getElementById("ActionInput").value;
+        if (x != '')
+        {
+            var DataMain = document.getElementById("DataMain").value;
+            var SubActionInput = document.getElementById("SubActionInput").value;
+            var DataSub = document.getElementById("DataSub").value;
+            str=x+DataMain+" "+SubActionInput+" "+DataSub;
+            console.log(str);
+            var i = document.getElementsByClassName("Pagecontentlist");
+            var elem1 = document.createElement('li');
+            elem1.setAttribute("class", "Pagecontentlist");
+
+            var Edit = document.createElement('i');
+            Edit.setAttribute("class", "Edit darkBasic material-icons");
+            Edit.textContent="create";
+            elem1.appendChild(Edit);
+
+            var Close = document.createElement('i');
+            Close.setAttribute("class", "Close");
+            Close.setAttribute("class", "darkBasic Close material-icons");
+            Close.textContent="cancel";
+            elem1.appendChild(Close);
+
+            var ActionEl = document.createElement('span');
+            ActionEl.setAttribute("class", "DisplayAction");
+            ActionEl.textContent=x;
+            elem1.appendChild(ActionEl);
+            if (DataMain !='' && document.getElementById('MainData').className.split(" ").indexOf("hides") <0){
+            var MainDataEl = document.createElement('span');
+            if (DataMain.charAt(0) == "$"){
+                MainDataEl.setAttribute("class", "DisplayVariable");
+            }
+            else{
+                if(DataMain.charAt(0) == '"' && DataMain.slice(-1) == '"'){
+                    MainDataEl.setAttribute("class", "DisplayString"); 
+                }
+                else{
+                    MainDataEl.setAttribute("class", "normalBasic");
+                    
+                }
+            }
+            MainDataEl.textContent=DataMain;
+            elem1.appendChild(MainDataEl);
+            }
+            if (SubActionInput !='' && document.getElementById('step2').className.split(" ").indexOf("hides") <0){
+            var AndC = document.createElement('span');
+            AndC.setAttribute("class", "normalBasic");
+            AndC.textContent="And";
+            elem1.appendChild(AndC);
+            var SubAction = document.createElement('span');
+            SubAction.setAttribute("class", "DisplayAction");
+            SubAction.textContent=SubActionInput;
+            elem1.appendChild(SubAction);
+            
+            var SubDataEl = document.createElement('span');
+            if (DataSub.charAt(0) == "$"){
+                SubDataEl.setAttribute("class", "DisplayVariable");
+            }
+            else{
+                if(DataSub.charAt(0) == '"' && DataSub.slice(-1) == '"'){
+                    SubDataEl.setAttribute("class", "DisplayString"); 
+                }
+                else{
+                    SubDataEl.setAttribute("class", "normalBasic");
+                    
+                }
+            }
+            SubDataEl.textContent=DataSub;
+            elem1.appendChild(SubDataEl);
+            }
+            document.getElementById("PageList").appendChild(elem1);
+
+            snackbar("2");
+        }
+        else{
+            snackbar("1");
+        }
+
+    }
+    function AddPageFinal(){
+        var PageName = document.getElementById("PageName").value;
+        var PageList = [{%for PAGE in PageList%}'{{PAGE}}',{%endfor%}];
+        var check=PageName+".txt";
+        console.log(PageList,PageName+".txt",check);
+        if ( PageList.includes(check)){
+            console.log(PageList,PageName+".txt");
+            snackbar("3")
+        }
+        else{
+            console.log("new page");
+        
+        var i;
+        var j;
+        var lis = document.getElementsByClassName("Pagecontentlist")
+        var peragraph ="";
+        for(i=0;i<lis.length;i++){
+            var words = lis[i].getElementsByTagName("span");
+            var sentence = "";
+            for(j=0;j<words.length;j++)
+            {
+                if(words[j].textContent !=''){
+                    sentence =sentence+" "+words[j].textContent;
+                }
+            }
+            console.log(sentence)
+            peragraph=peragraph+sentence+"\n";
+            //
+        }
+        console.log(peragraph);
+        document.getElementById("PageContenthidden").value=peragraph;
+        document.getElementById("pageform").submit();
+    }}
+    
+    function ClassClose(){
+
+    }
+    function edit(){
+
+    }
+
+    function AddChapterFinal(){
+        
+    }
+</script>
+</script>
+{% endblock %}
