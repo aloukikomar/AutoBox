@@ -9,6 +9,7 @@ from django.shortcuts import redirect
 dir_path = os.path.dirname(os.path.realpath(__file__))
 PagePath=dir_path+"/../BDD/Pages/"
 ChapterPath=dir_path+"/../BDD/Chapters/"
+NovelPath=dir_path+"/../BDD/Novels/"
 
 PageList=os.listdir(PagePath)
 
@@ -21,15 +22,17 @@ def index(request):
 
 def home(request):
 	ChapterAvailable=os.listdir(ChapterPath)
+	NovelAvailable=os.listdir(NovelPath)
 	filetoopen=open(path,"r")
 	outputfile=filetoopen.readlines()
 	PageList=os.listdir(PagePath)
-	return render(request,'Library/home.html',{'filedata':filedata,'outputfile':outputfile,'PageList':PageList,'ChapterAvailable':ChapterAvailable})
+	return render(request,'Library/home.html',{'filedata':filedata,'outputfile':outputfile,'PageList':PageList,'ChapterAvailable':ChapterAvailable,'NovelAvailable':NovelAvailable})
 
 def AddNovelForm(request):
-    	ChapterAvailable=os.listdir(ChapterPath)
-    	print(ChapterAvailable)
-    	return render(request,'Library/AddNovel.html',{'ChapterAvailable':ChapterAvailable})
+	ChapterAvailable=os.listdir(ChapterPath)
+	NovelAvailable=os.listdir(NovelPath)
+	print(ChapterAvailable,NovelAvailable)
+	return render(request,'Library/AddNovel.html',{'ChapterAvailable':ChapterAvailable,'NovelAvailable':NovelAvailable})
 
 def AddChapterForm(request):
 	ChapterAvailable=os.listdir(ChapterPath)
@@ -62,6 +65,18 @@ def ADDCHAPTER(request):
 		if not os.path.exists(directory):
 			os.makedirs(directory)
 		p=open(directory+"/PageIndex.txt","w+")
+		p.write(Contents)
+		p.close()
+        return redirect("/Library/home/")
+
+def ADDNOVEL(request):
+	if request.method =='POST':
+		NovelName=request.POST.get('NovelName')
+		Contents=request.POST.get('NovelContent')
+		directory=NovelPath+NovelName
+		if not os.path.exists(directory):
+			os.makedirs(directory)
+		p=open(directory+"/ChapterIndex.txt","w+")
 		p.write(Contents)
 		p.close()
         return redirect("/Library/home/")

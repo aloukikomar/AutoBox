@@ -383,6 +383,37 @@ Somthing went wrong
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
+function WriteNovel(){
+    var x = document.getElementById("NovelInput").value;
+    var NovelIterations=document.getElementById("NovelIterations").value;
+        if (x != ''){
+            var elem3 = document.createElement('li');
+            elem3.setAttribute("class", "Novelcontentlist");
+
+            var Edit = document.createElement('i');
+            Edit.setAttribute("class", "Edit darkBasic material-icons");
+            Edit.textContent="create";
+            elem3.appendChild(Edit);
+
+            var Close = document.createElement('i');
+            Close.setAttribute("class", "Close");
+            Close.setAttribute("class", "darkBasic Close material-icons");
+            Close.textContent="cancel";
+            elem3.appendChild(Close);
+
+            var NovelName= document.createElement('span');
+            NovelName.setAttribute("class","DisplayAction");
+            NovelName.textContent=x;
+            elem3.appendChild(NovelName);
+
+            var Iteration= document.createElement('span');
+            Iteration.setAttribute("class","DisplayFunction");
+            Iteration.textContent=NovelIterations;
+            elem3.appendChild(Iteration);
+
+
+            document.getElementById("NovelList").appendChild(elem3);
+}}
 
 function WritePage(){
     var x = document.getElementById("PageInput").value;
@@ -571,7 +602,36 @@ function WritePage(){
     }
     }
     function AddNovelFinal(){
+        var NovelName = document.getElementById("NovelName").value;
+        var NovelList = [{%for NOVEL in NovelAvailable %}'{{NOVEL}}',{%endfor%}];
+        console.log(NovelName,NovelList);
+        if ( NovelList.includes(NovelName)){
+            snackbar("3")
+        }
+        else{
+            console.log("new Novel");
         
+        var i;
+        var j;
+        var lis = document.getElementsByClassName("Novelcontentlist")
+        var peragraph ="";
+        for(i=0;i<lis.length;i++){
+            var words = lis[i].getElementsByTagName("span");
+            var sentence = "";
+            for(j=0;j<words.length;j++)
+            {
+                if(words[j].textContent !=''){
+                    sentence =sentence+" "+words[j].textContent;
+                }
+            }
+            console.log(sentence)
+            peragraph=peragraph+sentence+"\n";
+            //
+        }
+        console.log(peragraph+"check---------");
+        document.getElementById("NovelContenthidden").value=peragraph;
+        document.getElementById("Novelform").submit();
+    }
     }
 </script>
 </script>
