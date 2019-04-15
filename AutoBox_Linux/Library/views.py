@@ -20,11 +20,11 @@ def index(request):
 	return HttpResponse("<h1>AddCases</h1>")
 
 def home(request):
-
+	ChapterAvailable=os.listdir(ChapterPath)
 	filetoopen=open(path,"r")
 	outputfile=filetoopen.readlines()
 	PageList=os.listdir(PagePath)
-	return render(request,'Library/home.html',{'filedata':filedata,'outputfile':outputfile,'PageList':PageList})
+	return render(request,'Library/home.html',{'filedata':filedata,'outputfile':outputfile,'PageList':PageList,'ChapterAvailable':ChapterAvailable})
 
 def AddNovelForm(request):
     	ChapterAvailable=os.listdir(ChapterPath)
@@ -32,9 +32,11 @@ def AddNovelForm(request):
     	return render(request,'Library/AddNovel.html',{'ChapterAvailable':ChapterAvailable})
 
 def AddChapterForm(request):
-    	ChapterAvailable=os.listdir(ChapterPath)
-    	print(ChapterAvailable)
-    	return render(request,'Library/AddChapters.html',{'ChapterAvailable':ChapterAvailable,'PageList':PageList})
+	ChapterAvailable=os.listdir(ChapterPath)
+	PageListCurrent=os.listdir(PagePath)
+	PageListCurrent.sort()
+	print(ChapterAvailable)
+	return render(request,'Library/AddChapters.html',{'ChapterAvailable':ChapterAvailable,'PageListCurrent':PageListCurrent})
 
 def AddPageForm(request):
     	ChapterAvailable=os.listdir(ChapterPath)
@@ -50,4 +52,16 @@ def ADDPAGE(request):
 		p.write(Contents)
 		p.close()
 		print(NewPagePath)
+        return redirect("/Library/home/")
+
+def ADDCHAPTER(request):
+	if request.method =='POST':
+		ChapterName=request.POST.get('ChapterName')
+		Contents=request.POST.get('ChapterContent')
+		directory=ChapterPath+ChapterName
+		if not os.path.exists(directory):
+			os.makedirs(directory)
+		p=open(directory+"/PageIndex.txt","w+")
+		p.write(Contents)
+		p.close()
         return redirect("/Library/home/")

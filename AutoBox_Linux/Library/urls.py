@@ -11,5 +11,6 @@ urlpatterns = [
 	url(r'^AddChapterForm',views.AddChapterForm , name='AddChapterForm'),
 	url(r'^AddPageForm',views.AddPageForm , name='AddPageForm'),
 	url(r'^ADDPAGE',views.ADDPAGE , name='ADDPAGE'),
+	url(r'^ADDCHAPTER',views.ADDCHAPTER , name='ADDCHAPTER'),
 	url(r'^home',views.home , name='home')
 ]

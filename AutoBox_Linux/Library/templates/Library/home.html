@@ -389,7 +389,7 @@ function WritePage(){
     var ChapIterations=document.getElementById("ChapIterations").value;
         if (x != ''){
             var elem2 = document.createElement('li');
-            elem2.setAttribute("class", "Pagecontentlist");
+            elem2.setAttribute("class", "Chaptercontentlist");
 
             var Edit = document.createElement('i');
             Edit.setAttribute("class", "Edit darkBasic material-icons");
@@ -539,6 +539,38 @@ function WritePage(){
     }
 
     function AddChapterFinal(){
+        var ChapterName = document.getElementById("ChapterName").value;
+        var Chapterist = [{%for CHAPTER in ChapterAvailable%}'{{CHAPTER}}',{%endfor%}];
+        console.log(ChapterName,Chapterist);
+        if ( Chapterist.includes(ChapterName)){
+            snackbar("3")
+        }
+        else{
+            console.log("new Chapter");
+        
+        var i;
+        var j;
+        var lis = document.getElementsByClassName("Chaptercontentlist")
+        var peragraph ="";
+        for(i=0;i<lis.length;i++){
+            var words = lis[i].getElementsByTagName("span");
+            var sentence = "";
+            for(j=0;j<words.length;j++)
+            {
+                if(words[j].textContent !=''){
+                    sentence =sentence+" "+words[j].textContent;
+                }
+            }
+            console.log(sentence)
+            peragraph=peragraph+sentence+"\n";
+            //
+        }
+        console.log(peragraph+"check---------");
+        document.getElementById("ChapterContenthidden").value=peragraph;
+        document.getElementById("Chapterform").submit();
+    }
+    }
+    function AddNovelFinal(){
         
     }
 </script>

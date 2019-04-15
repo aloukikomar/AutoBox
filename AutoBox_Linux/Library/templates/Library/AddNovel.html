@@ -1,27 +1,111 @@
-<div class="formLib">
-    <form>
-        <h3><b>Novel Name:</b><input type="text"></h3>
-        <br>
-        <div class="row">
-            <div class="col-lg-5">
-                <h4><b>List of Chapters:</b></h4>
-                <div class="DisplayTab">
-                    {%for Chapter in ChapterAvailable%}
-                    <div class="DisplayTabOptions">
-                        <input type="checkbox" id="{{Chapter}}" onclick="ToggleName('{{Chapter}}')">{{Chapter}}
-                    </div>
-                    {%endfor%}
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <h4><b>Current Index Created</b></h4>
-                <div class="DisplayTab">
-                    <table class="table table-striped" id="SelctedChapters">
-                    </table>
+<style>
+    .hides {
+        visibility :hidden;
+    }
 
-                </div>
-            </div><br><br>
-            <input type="submit" class="AddOption" value="Add Novel">
-        </div>
-    </form>
+    #editor {
+        visibility: hidden;
+        width: 400px;
+        height: 100px;
+        padding: 10px;
+        background-color: #444;
+        color: white;
+        font-size: 14px;
+        font-family: monospace;
+    }
+
+    .statement {
+        color: orange;
+    }
+
+    #NovelContIn {
+        height: 220px;
+        width: 100%;
+        overflow: auto;
+        color: white;
+        font-size: 15px;
+        font-family: monospace;
+        background-color: rgb(52, 52, 52);
+        text-align: left;
+    }
+
+    .Content {
+        font-size: 20px;
+    }
+
+    .InpDrops {
+        font-size: 15px;
+        width: 55%;
+        padding: 1%;
+        margin: 1%;
+        height: 20px;
+    }
+
+    .write {
+        width: 100px;
+    }
+
+    .ActionInput {
+        margin-left: 50px;
+    }
+    ul { list-style-type: none; }
+    #NovelContenthidden{
+        visibility: hidden;
+    width: 0px;
+    height: 0px;
+    padding: 0px;
+    border: 0px;
+    position: fixed;
+    }
+    #NovelInput{
+        width: 70%;
+        height: 27px;
+    }
+    #NovelIterations{
+        width: 40%;
+    }
+    #tditeration{
+        width: 200px;
+    }
+    #tdpage{
+        width: 400px;
+    }
+</style>
+
+
+<div class="formLib">
+    <form action="/Library/ADDNOVEL" method="POST" id="Novelform">
+        {%csrf_token%}
+        <h3><b>Novel Name: </b><input type="text" name="NovelName" id="NovelName"></h3>
+        <br>
+        <div class="Content">
+            <h5><b>Novel Content: </b></h5>
+            <table>
+                <tr>
+                    <td id="tdpage">
+                       Chapter :<select placeholder="Select Page" id="NovelInput" class="drop InpDrops" name="ChapterInput">
+                        {% for Cnames in ChapterAvailable %}
+                   <option>{{Cnames}}</option>
+                   {%endfor%}
+                   </select>
+                    </td>
+                    <td id="tditeration">
+             Itrations:
+                        <input type="number" class="InpDrops" id="NovelIterations" placeholder="Iterations">
+                    </td>
+                    <td>
+                        <button type="button" class="AddOption write" onclick="NovelPage()">Add</button>
+                    </td>
+                </tr>
+               
+</table>
+<br>
+<textarea id="NovelContenthidden" name="NovelContent"></textarea>
+<div id="NovelContIn" name="">
+    <ul id="NovelList">
+
+    </ul>
+</div>
+<button type="button" class="AddOption" onclick="AddNovelFinal()">Add Novel</button>
+</form>
 </div>
