@@ -1,0 +1,62 @@
+{
+    "NetStorm": {
+        "type": "Web",
+        "webapplication":"Chrome",
+        "username": "aloukik",
+        "password": "aloukik",
+        "url": "http://10.10.30.185",
+        "ScenarioName": "ToolBox_NS",
+        "NewScenarioName":"NSAutoBoxBegin",
+        "GroupName":"G1"
+
+    },
+    "NetForest": {
+        "type": "Web",
+        "webapplication":"Chrome",
+        "username": "netstorm",
+        "password": "netstorm",
+        "url": "http://10.10.70.15:8000",
+        "":""
+
+    },
+    "NetOcean": {
+        "type": "Web",
+        "username": "cavisson",
+        "password": "@dmin",
+        "url": "http://10.10.30.185:8001",
+        "ServiceNameData":"AutoBoxData",
+        "ServiceURLData":"/AutoBox",
+        "ServiceTempleateNameData":"temp",
+        "ServiceRequestData":"Req",
+        "ServiceResponseData":"Res",
+        "it": "",
+        "ScenarioName": "ToolBox_NS"
+    },
+    "Jenkins": {
+        "type": "Web",
+        "username": "aloukik",
+        "password": "Pass4",
+        "url": "http://10.10.30.185:8080",
+        "it": ""
+    },
+    "Machine_185":{
+        "type": "Machine",
+        "url":"10.10.30.185|cavisson|cavisson"
+    },
+    "Machine_70.15":{
+        "type":"Machine",
+        "url":"10.10.70.15|cavisson|cavisson"
+    },
+   
+        "NetVision": {
+            "type": "Web",
+            "webapplication":"Chrome",
+            "username": "cavisson",
+            "password": "@dmin",
+            "url": "http://10.10.30.62:8017",
+            "ScenarioName": "ToolBox_NS",
+            "NewScenarioName":"NSAutoBoxBegin",
+            "GroupName":"G1"
+    
+        }
+}

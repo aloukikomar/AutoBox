@@ -1,0 +1,1 @@
+execfile('BDD/MakePOM.py')
