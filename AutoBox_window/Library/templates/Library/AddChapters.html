@@ -1,0 +1,111 @@
+<style>
+    .hides {
+        visibility :hidden;
+    }
+
+    #editor {
+        visibility: hidden;
+        width: 400px;
+        height: 100px;
+        padding: 10px;
+        background-color: #444;
+        color: white;
+        font-size: 14px;
+        font-family: monospace;
+    }
+
+    .statement {
+        color: orange;
+    }
+
+    #ChapterContIn {
+        height: 220px;
+        width: 100%;
+        overflow: auto;
+        color: white;
+        font-size: 15px;
+        font-family: monospace;
+        background-color: rgb(52, 52, 52);
+        text-align: left;
+    }
+
+    .Content {
+        font-size: 20px;
+    }
+
+    .InpDrops {
+        font-size: 15px;
+        width: 55%;
+        padding: 1%;
+        margin: 1%;
+        height: 20px;
+    }
+
+    .write {
+        width: 100px;
+    }
+
+    .ActionInput {
+        margin-left: 50px;
+    }
+    ul { list-style-type: none; }
+    #ChapterContenthidden{
+        visibility: hidden;
+    width: 0px;
+    height: 0px;
+    padding: 0px;
+    border: 0px;
+    position: fixed;
+    }
+    #PageInput{
+        width: 70%;
+        height: 27px;
+    }
+    #ChapIterations{
+        width: 40%;
+    }
+    #tditeration{
+        width: 200px;
+    }
+    #tdpage{
+        width: 400px;
+    }
+</style>
+
+
+<div class="formLib">
+    <form action="/Library/ADDCHAPTER" method="POST" id="Chapterform">
+        {%csrf_token%}
+        <h3><b>Chapter Name: </b><input type="text" name="ChapterName" id="ChapterName"></h3>
+        <br>
+        <div class="Content">
+            <h5><b>Chapter Content: </b></h5>
+            <table>
+                <tr>
+                    <td id="tdpage">
+                       Page :<select placeholder="Select Page" id="PageInput" class="drop InpDrops" name="PageInput">
+                        {% for Pnames in PageListCurrent %}
+                   <option>{{Pnames}}</option>
+                   {%endfor%}
+                   </select>
+                    </td>
+                    <td id="tditeration">
+             Itrations:
+                        <input type="number" class="InpDrops" id="ChapIterations" placeholder="Iterations">
+                    </td>
+                    <td>
+                        <button type="button" class="AddOption write" onclick="WritePage()">Add</button>
+                    </td>
+                </tr>
+               
+</table>
+<br>
+<textarea id="ChapterContenthidden" name="ChapterContent"></textarea>
+<div id="ChapterContIn" name="">
+    <ul id="ChapterList">
+
+    </ul>
+</div>
+<button type="button" class="AddOption" onclick="AddChapterFinal()">Add Chapter</button>
+</form>
+</div>

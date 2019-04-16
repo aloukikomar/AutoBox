@@ -1,0 +1,8 @@
+Include UserData.json,Xpath.json NEW
+Continue
+LookFor ServiceName and Enter ServiceNameData
+LookFor ServiceURL and Enter ServiceURLData
+LookFor ServiceTempleateName and Enter ServiceTempleateNameData
+LookFor ServiceRequest and WriteHtml ServiceRequestData
+LookFor ServiceResponse and WriteHtml ServiceResponseData
+LookFor ServiceAdd and Click

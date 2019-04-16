@@ -1,0 +1,4 @@
+SetNetForestMachine
+GetVerificationData
+Verify
+MachineClose

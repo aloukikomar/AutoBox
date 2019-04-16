@@ -1,0 +1,49 @@
+<style>
+.String{
+    color: red;
+}    
+.function{
+    font-weight:bold;
+    color:darkgreen;
+}
+.KeyWord{
+    font-weight:bold;
+    color: orange;
+}
+.Parameter{
+    font-weight:bold;
+    color: Blue;
+}
+.Variable{
+    font-weight:bold;
+    color: purple;
+}
+.word{
+    font-size: 12px; 
+}
+</style>
+
+<table class="table table-striped">{%for line in PageContent%}
+    <tr>
+        <td>
+            {{ forloop.counter }}
+        </td>
+        <td>{%for word in line%}
+                {% if "@" in word %}
+                    <span class="word function">{{word}}</span>
+                {% elif "{" in word %}
+                    <span class="word Parameter">{{word}}</span> 
+                {% elif word in KeyWord %}
+                    <span class="word KeyWord">{{word}}</span> 
+                {% elif "$" in word %}
+                    <span class="word Variable">{{word}}</span>  
+                {% elif '"' in word %}
+                    <span class="word String">{{word}}</span>
+                {%else%}
+                    <span class="word">{{word}}</span>         
+                {%endif%}                
+            {%endfor%}
+        </td>
+    </tr>
+
+    {%endfor%}</table>
