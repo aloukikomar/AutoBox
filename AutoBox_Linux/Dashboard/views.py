@@ -8,7 +8,7 @@ import json
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-BaseBDDDir=dir_path+"/../BDD/"
+BaseBDDDir="/home/automation/webapps/AutoBox/BDD/"
 ToReadFile= BaseBDDDir+"ToRead.txt"
 
 LogToolBoxRunTests="tmp/LOG_TOOLBOX_RUNTESTS"

@@ -1,4 +1,5 @@
 {
     "Chromewebapp": "Webapp:Chrome",
+    "ChromewebHeadless": "Webapp:ChromeHeadless",
     "LinuxMachine":"Machine:linux"
 }

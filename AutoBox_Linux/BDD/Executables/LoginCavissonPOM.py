@@ -5,9 +5,9 @@ from Core import SeleniumFunction,Comman,Machine,PythonFunction_lib
 
 def main(driver):
     element=SeleniumFunction.FindElement(driver,"/html/body/entry/login/div/div[2]/div/form/div[2]/input","xpath")
-    SeleniumFunction.SendData(element,"cavisson")
+    SeleniumFunction.SendData(driver,element,"aloukik")
     element=SeleniumFunction.FindElement(driver,"/html/body/entry/login/div/div[2]/div/form/div[3]/input","xpath")
-    SeleniumFunction.SendData(element,"@dmin")
+    SeleniumFunction.SendData(driver,element,"aloukik")
     element=SeleniumFunction.FindElement(driver,"//*[@id='login-button']","xpath")
-    SeleniumFunction.Click(element)
+    SeleniumFunction.Click(driver,element)
     return driver

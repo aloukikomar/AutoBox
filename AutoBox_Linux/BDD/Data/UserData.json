@@ -1,7 +1,7 @@
 {
     "NetStorm": {
         "type": "Web",
-        "webapplication":"Chrome",
+        "webapplication":"ChromeHeadless",
         "username": "aloukik",
         "password": "aloukik",
         "url": "http://10.10.30.185",
@@ -50,7 +50,7 @@
    
         "NetVision": {
             "type": "Web",
-            "webapplication":"Chrome",
+            "webapplication":"ChromeHeadless",
             "username": "cavisson",
             "password": "@dmin",
             "url": "http://10.10.30.62:8017",

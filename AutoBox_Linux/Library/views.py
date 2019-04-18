@@ -16,7 +16,7 @@ PageList=os.listdir(PagePath)
 filedata="No File Selected"
 TestCasesDir="/home/automation/webapps/"
 LogToolBoxRunTests="/tmp/LOG_TOOLBOX_RUNTESTS"
-path=dir_path+"/../BDD/ToRead.txt"
+path=TestCasesDir+"AutoBox/BDD/ToRead.txt"
 def index(request):
 	return HttpResponse("<h1>AddCases</h1>")
 
@@ -55,7 +55,7 @@ def ADDPAGE(request):
 		p.write(Contents)
 		p.close()
 		print(NewPagePath)
-		return redirect("/Library/home/")
+        return redirect("/Library/home/")
 
 def ADDCHAPTER(request):
 	if request.method =='POST':
@@ -67,7 +67,7 @@ def ADDCHAPTER(request):
 		p=open(directory+"/PageIndex.txt","w+")
 		p.write(Contents)
 		p.close()
-		return redirect("/Library/home/")
+        return redirect("/Library/home/")
 
 def ADDNOVEL(request):
 	if request.method =='POST':
@@ -79,4 +79,4 @@ def ADDNOVEL(request):
 		p=open(directory+"/ChapterIndex.txt","w+")
 		p.write(Contents)
 		p.close()
-		return redirect("/Library/home/")
+        return redirect("/Library/home/")
