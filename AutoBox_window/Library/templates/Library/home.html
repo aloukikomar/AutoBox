@@ -550,11 +550,21 @@ function WritePage(){
             for(j=0;j<words.length;j++)
             {
                 if(words[j].textContent !=''){
+                    if( sentence != ''){
                     sentence =sentence+" "+words[j].textContent;
+                    }
+                    else{
+                        sentence=words[j].textContent;
+                    }
                 }
             }
             console.log(sentence)
-            peragraph=peragraph+sentence+"\n";
+            if(peragraph != ''){
+               peragraph=peragraph+"\n"+sentence; 
+            }
+            else{
+               peragraph=sentence; 
+            }
             //
         }
         console.log(peragraph);
@@ -589,11 +599,21 @@ function WritePage(){
             for(j=0;j<words.length;j++)
             {
                 if(words[j].textContent !=''){
+                    if( sentence != ''){
                     sentence =sentence+" "+words[j].textContent;
+                    }
+                    else{
+                        sentence=words[j].textContent;
+                    }
                 }
             }
             console.log(sentence)
-            peragraph=peragraph+sentence+"\n";
+            if(peragraph != ''){
+               peragraph=peragraph+"\n"+sentence; 
+            }
+            else{
+               peragraph=sentence; 
+            }
             //
         }
         console.log(peragraph+"check---------");
@@ -621,11 +641,23 @@ function WritePage(){
             for(j=0;j<words.length;j++)
             {
                 if(words[j].textContent !=''){
+                    if( sentence != ''){
                     sentence =sentence+" "+words[j].textContent;
+                    }
+                    else{
+                        sentence=words[j].textContent;
+                    }
                 }
             }
             console.log(sentence)
-            peragraph=peragraph+sentence+"\n";
+            if(peragraph != ''){
+               peragraph=peragraph+"\n"+sentence; 
+            }
+            else{
+               peragraph=sentence; 
+            }
+            
+            
             //
         }
         console.log(peragraph+"check---------");

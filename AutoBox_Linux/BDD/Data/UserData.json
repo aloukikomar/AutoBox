@@ -58,5 +58,18 @@
             "NewScenarioName":"NSAutoBoxBegin",
             "GroupName":"G1"
     
+        },
+        "NetOcean_25": {
+            "type": "Web",
+            "username": "cavisson",
+            "password": "@dmin",
+            "url": "http://10.10.30.25:8005",
+            "ServiceNameData":"AutoBoxData",
+            "ServiceURLData":"/AutoBox",
+            "ServiceTempleateNameData":"temp",
+            "ServiceRequestData":"Req",
+            "ServiceResponseData":"Res",
+            "it": "",
+            "ScenarioName": "ToolBox_NS"
         }
 }

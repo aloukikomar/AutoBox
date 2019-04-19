@@ -41,6 +41,22 @@
         "ServiceResponse":"/html/body/entry/app-root/app-netocean-add-services/div[2]/div/p-accordion/div/p-accordiontab/div[2]/div/div/div/div[2]/div[2]/codemirror/div/div[6]/div[1]/div/div/div/div[5]/div/pre/span",
         "ServiceAdd":"//span[text()='Add']/parent::button"
     },
+    "NetOcean_25": {
+        "UserNameField": "/html/body/entry/login/div/div[2]/div/form/div[2]/input",
+        "PasswordField": "/html/body/entry/login/div/div[2]/div/form/div[3]/input",
+        "ClickButton": "//*[@id='login-button']",
+        "UserDropDown": "//button[@icon='pi pi-caret-down']",
+        "LogOut":"//span[text()='Logout']//parent::a",
+        "ServiceIcon":"//i[@class='icon no-icon-service']//parent::span//parent::button",
+        "AddOption":"//span[text()='Add']",
+        "NormalOption":"//span[text()='Add']//parent::a//parent::li//child::p-tieredmenusub//child::ul//child::li//child::span[text()='Normal Mode']//parent::a",
+        "ServiceName":"//span[text()='Service Name:']/following-sibling::input",
+        "ServiceURL":"//span[text()=' URL:']/following-sibling::input",
+        "ServiceTempleateName":"//span[text()='Template Name:']/following-sibling::input",
+        "ServiceRequest":"/html/body/entry/app-root/app-netocean-add-services/div[2]/div/p-accordion/div/p-accordiontab/div[2]/div/div/div/div[1]/div[2]/codemirror/div/div[6]/div[1]/div/div/div/div[5]/div/pre/span",
+        "ServiceResponse":"/html/body/entry/app-root/app-netocean-add-services/div[2]/div/p-accordion/div/p-accordiontab/div[2]/div/div/div/div[2]/div[2]/codemirror/div/div[6]/div[1]/div/div/div/div[5]/div/pre/span",
+        "ServiceAdd":"//span[text()='Add']/parent::button"
+    },
     "Jenkins": {
         "UserNameField": "//*[@id=\\\"j_username\\\"]",
         "PasswordField": "//*[@id=\\\"main-panel\\\"]/div/form/table/tbody/tr[2]/td[2]/input",
