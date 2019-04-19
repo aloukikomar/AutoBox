@@ -2,8 +2,8 @@
     "line": {
         "Open": "    driver=Comman.OpenSystem(\"variable\",driver)",
         "LookFor": "    element=SeleniumFunction.FindElement(driver,\"variable\",\"xpath\")",
-        "Enter": "    SeleniumFunction.SendData(element,\"variable\")",
-        "Click": "    SeleniumFunction.Click(element)",
+        "Enter": "    SeleniumFunction.SendData(driver,element,\"variable\")",
+        "Click": "    SeleniumFunction.Click(driver,element)",
         "Variable": "tmp",
         "Run":"    driver=Comman.Driver(\"variable\")",
         "Close":"    SeleniumFunction.CloseDriver(driver)",

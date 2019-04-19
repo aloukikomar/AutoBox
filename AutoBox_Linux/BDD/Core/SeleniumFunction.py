@@ -23,14 +23,14 @@ def FindElement(driver,variable,types):
 def SetDriver(DriverType):
     if DriverType == "Chrome":
                 print("chrome")
-                driver=webdriver.Chrome("/home/automation/webapps/AutoBox/BDD/bins/Drivers/chromedriver")
+                driver=webdriver.Chrome(dir_path+"/../bins/Drivers/chromedriver")
     if DriverType == "ChromeHeadless":
                 print("ChromeHeadless",dir_path)
                 options = Options()
                 options.add_argument('--headless')
                 options.add_argument('--disable-gpu')  # Last I checked this was necessary.
                 driver = webdriver.Chrome(dir_path+"/../bins/Drivers/chromedriver", chrome_options=options)
-                driver.set_window_size(1920, 1080)
+                driver.set_window_size(1800, 1000)
     return driver
         
 def openURL(URL,driver):

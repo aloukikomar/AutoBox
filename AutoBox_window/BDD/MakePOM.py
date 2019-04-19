@@ -29,6 +29,7 @@ def MakeDirs(LogDir):
     os.mkdir( dir_path+"/../BDD/Logs/{}/Novels".format(LogDir), 0755 )
     os.mkdir( dir_path+"/../BDD/Logs/{}/Chapters".format(LogDir), 0755 )
     os.mkdir( dir_path+"/../BDD/Logs/{}/Pages".format(LogDir), 0755 )
+    os.mkdir( dir_path+"/../BDD/Logs/{}/Images".format(LogDir), 0755 )
 
 def MakeLog():
     LogDir="TSR_"+str(time.time()).split(".")[0]

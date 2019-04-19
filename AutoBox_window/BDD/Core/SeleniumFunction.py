@@ -1,7 +1,17 @@
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common import exceptions
-import time
+import time,os
+from selenium.webdriver.chrome.options import Options
+dir_path = os.path.dirname(os.path.realpath(__file__))
+def getpath():
+        #print(dir_path)
+        TSR=open(dir_path+"/../tmp/CurrentTSR","r").readline()
+        paths=dir_path+"/../Logs/{}/Images/".format(TSR)
+        print(paths)
+        return paths
+        #flow.write("driver=\"\"")
+        #flow.close()
 
 def FindElement(driver,variable,types):
     if types == "xpath":
@@ -13,19 +23,35 @@ def FindElement(driver,variable,types):
 def SetDriver(DriverType):
     if DriverType == "Chrome":
                 print("chrome")
-                driver=webdriver.Chrome("/home/automation/webapps/AutoBox/BDD/bins/Drivers/chromedriver")
+                driver=webdriver.Chrome(dir_path+"/../bins/Drivers/chromedriver")
+    if DriverType == "ChromeHeadless":
+                print("ChromeHeadless",dir_path)
+                options = Options()
+                options.add_argument('--headless')
+                options.add_argument('--disable-gpu')  # Last I checked this was necessary.
+                driver = webdriver.Chrome(dir_path+"/../bins/Drivers/chromedriver", chrome_options=options)
+                driver.set_window_size(1800, 1000)
     return driver
         
 def openURL(URL,driver):
     print(URL)
     driver.get(URL)
+    paths=getpath()
+    timestamp=str(str(time.time()).split(".")[0])
+    driver.save_screenshot(paths+timestamp+"HitURL.png")
     return driver
     
-def SendData(element,Fill):
+def SendData(driver,element,Fill):
         element.send_keys(Fill)
+        paths=getpath()
+        timestamp=str(str(time.time()).split(".")[0])
+        driver.save_screenshot(paths+timestamp+"SendData.png")
 
-def Click(element):
+def Click(driver,element):
         time.sleep(1)
+        paths=getpath()
+        timestamp=str(str(time.time()).split(".")[0])
+        driver.save_screenshot(paths+timestamp+"Click.png")
         try:
                 element.click()
                 time.sleep(4)
