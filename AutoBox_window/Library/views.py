@@ -37,6 +37,7 @@ def AddNovelForm(request):
 def AddChapterForm(request):
 	ChapterAvailable=os.listdir(ChapterPath)
 	PageListCurrent=os.listdir(PagePath)
+	PageListCurrent="".join(PageListCurrent).replace(".txt"," ").replace("\r","").split(" ")
 	PageListCurrent.sort()
 	print(ChapterAvailable)
 	return render(request,'Library/AddChapters.html',{'ChapterAvailable':ChapterAvailable,'PageListCurrent':PageListCurrent})

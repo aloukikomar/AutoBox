@@ -7,6 +7,9 @@ import os
 import json
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
+PagePath=dir_path+"/../BDD/Pages/"
+ChapterPath=dir_path+"/../BDD/Chapters/"
+NovelPath=dir_path+"/../BDD/Novels/"
 
 BaseBDDDir="/home/automation/webapps/AutoBox/BDD/"
 ToReadFile= BaseBDDDir+"ToRead.txt"
@@ -18,10 +21,11 @@ def index(request):
 	return HttpResponse("<h1>Run</h1>")
 
 def home(request,*messag):
-	ToDoList=open(ToReadFile,"r").readlines()
-	ToDoLists="".join(ToDoList).replace("\n"," ").split(" ")
-	print(ToDoLists)
-	return render(request,'Dashboard/home.html',{'ToDoLists':ToDoLists})
+    NovelAvailable=os.listdir(NovelPath)
+    ToDoList=open(ToReadFile,"r").readlines()
+    ToDoLists="".join(ToDoList).replace("\n"," ").split(" ")
+    print(ToDoLists)
+    return render(request,'Dashboard/home.html',{'ToDoLists':ToDoLists,'NovelAvailable':NovelAvailable})
 
 
 def BuildPOM(request):
@@ -38,7 +42,8 @@ def RunTest(request):
 def GetNovel(request):
     NovelContent=request.GET.get("novel")
     NovelContent=open(BaseBDDDir+"Novels/"+NovelContent+"/ChapterIndex.txt","r").readlines()
-    NovelContent="".join(NovelContent).replace("\n"," ").split(" ")
+    NovelContent="".join(NovelContent).replace("\n"," ").replace("\r","").split(" ")
+    print(NovelContent)
     return render(request,'Dashboard/novelContent.html',{'NovelContent':NovelContent})
 
 def GetChapter(request):

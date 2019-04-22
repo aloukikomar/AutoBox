@@ -1,5 +1,10 @@
 {% extends "Dashboard/header.html" %} {% load static %}{% block content %}
-
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
 <style>
     #sidebarK {
         padding: 15px;
@@ -63,12 +68,25 @@
         border: 1px solid white;
         transform: scale(1.001, 1.1)
     }
-    
+    .Fstart {
+        color: white;
+        margin: 2px;
+        height: 30px;
+        width: 100%;
+        background-color: #222;
+        border-style: none;
+    }
+    .Fstart:hover{
+        background: linear-gradient(#222, grey);
+        transition: .15s;
+        transform: scale(1.001, 1.1);
+        border: 2px solid red;
+    }
     .current {
         padding: 1%;
-        margin-top: 2%;
+        margin-top: 3%;
         margin-bottom: 2%;
-        height: 400px;
+        height: 370px;
     }
     
     .library {
@@ -96,6 +114,7 @@
     .tab {
         padding: 2%;
         text-decoration: none;
+        list-style: none;
         width: 100%;
         height: 35px;
         box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
@@ -140,6 +159,42 @@
         height: 400px;
         overflow:scroll;
     }
+    .FIterations{
+        width: 40px;
+    }
+    .InsertNovel{
+        height:26px;
+        padding: 1%;
+       border: none;
+        background-color: #222;
+        color: white;
+    }
+    #NovelUl{
+        padding: 0px;
+    }
+    .NovelInF{
+        width: 170px;
+    }
+    .Plus{
+        width:20px;
+    }
+    .Plus:hover{
+        background: linear-gradient(#228E01, #222);
+        transition: .25s;
+        border: 1px solid white;
+        transform: scale(1.001, 1.1)
+    }
+    .RightCurve{
+        border-radius: 0px 13px 13px 0px;
+    }
+    .ModalFix{
+        margin-left:5%; 
+        margin-right: 5%;
+        max-width: 90%;
+    }
+    .ModalContent{
+        width: 100%; 
+    }
 </style>
 
 <div id="sidebarK" class="border">
@@ -154,16 +209,36 @@
 <div class="row Dash">
     <div class="col-lg-3">
         <b>List of Novels To Read</b>
+        <table>
+            <tr>
+                <td id="tdpage">
+                <select placeholder="Select Novel" id="NovelFInput" class="drop NovelInF InsertNovel" name="NovelFInput">
+                    {% for Nnames in NovelAvailable %}
+               <option>{{Nnames}}</option>
+               {%endfor%}
+               </select>
+                </td>
+                <td id="tditeration">
+                    <input type="number" class="InpDrops FIterations InsertNovel" id="NovelFIterations" placeholder="Iterations">
+                </td>
+                <td>
+                    <button type="button" class="Plus InsertNovel RightCurve" onclick="AddNovelToList()">+</button>
+                </td>
+            </tr>           
+</table>
         <div class="display current border">
-            {%for Task in ToDoLists %}
-            <div class="tab" onclick="loadNovel('{{Task}}')">{{Task}}</div>
-            {%endfor%}
+            <ul id="NovelUl">
+
+            </ul>
         </div>
+    
         <button class="start" data-toggle="modal" data-target="#exampleModalCenter">Start Test</button>
-        <button class="library">View Library</button>
+        <button class="Fstart">Force Start</button>
+    
+    
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered ModalStartTest" role="document">
-              <div class="modal-content">
+            <div class="modal-dialog modal-lg modal-dialog-centered ModalStartTest ModalFix" role="document">
+              <div class="modal-content ModalContent ">
                 <div class="modal-header">
                   <h3 class="modal-title" id="exampleModalCenterTitle">Start Testing</h3>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -171,7 +246,11 @@
                   </button>
                 </div>
                 <div class="modal-body" id="modalbody">
-                  ...
+                  
+                    <div id="ModalInDisplay">
+
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary library" data-dismiss="modal">Close</button>
@@ -181,6 +260,8 @@
             </div>
         </div>
     </div>
+
+
     <div class="col-lg-3">
         <b>List of Chapters To Read</b>
         <div class="Plotpan border" id="novelCon"><b style="color:rgba(0, 0, 0, 0.4);">Select a Novel To See its chapter...</b></div>
@@ -249,5 +330,41 @@
         xhttp.open("GET", urldata, true);
         xhttp.send();
     }
+
+function AddNovelToList(){
+    var x = document.getElementById("NovelFInput").value;
+    var xIt = document.getElementById("NovelFIterations").value;
+    if( x != ''){
+        var Novelli = document.createElement('li');
+        Novelli.setAttribute("class", "tab");
+        Novelli.setAttribute("onclick", "loadNovel('"+x+"')");
+
+            var Edit = document.createElement('i');
+            Edit.setAttribute("class", "Edit darkBasic material-icons");
+            Edit.textContent="create";
+            Novelli.appendChild(Edit);
+
+            var Close = document.createElement('i');
+            Close.setAttribute("class", "Close");
+            Close.setAttribute("class", "darkBasic Close material-icons");
+            Close.textContent="cancel";
+            Novelli.appendChild(Close);
+
+            var NovelFName= document.createElement('span');
+            NovelFName.setAttribute("class","DisplayAction");
+            NovelFName.textContent=x;
+            Novelli.appendChild(NovelFName);
+
+            var IterationF= document.createElement('span');
+            IterationF.setAttribute("class","DisplayFunction");
+            IterationF.textContent=xIt;
+            Novelli.appendChild(IterationF);
+
+    document.getElementById("NovelUl").appendChild(Novelli);
+
+    }
+}
+
 </script>
+
 {% endblock %}
