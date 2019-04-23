@@ -112,12 +112,14 @@
     }
     
     .tab {
-        padding: 2%;
+        padding: 1%;
         text-decoration: none;
         list-style: none;
         width: 100%;
-        height: 35px;
+        height: 25px;
+        font-size:10px;
         box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
+        overflow:hidden;
     }
     
     .tab:hover {
@@ -195,6 +197,39 @@
     .ModalContent{
         width: 100%; 
     }
+    .material-icons {
+ margin-right: 5px;
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+#AllNovels{
+    visibility: hidden;
+    height: 0px;
+    width:0px;
+}
+#TestContent{
+    overflow: hidden;
+}
 </style>
 
 <div id="sidebarK" class="border">
@@ -209,6 +244,7 @@
 <div class="row Dash">
     <div class="col-lg-3">
         <b>List of Novels To Read</b>
+        {% if lock == 0 %}
         <table>
             <tr>
                 <td id="tdpage">
@@ -226,15 +262,29 @@
                 </td>
             </tr>           
 </table>
+<form id="ToRead" action="/Dashboard/StartTest" method="POST">
+    {%csrf_token%}
+    <textarea id="AllNovels" name="AllNovels"></textarea>
+</form>
+{%endif%}
         <div class="display current border">
             <ul id="NovelUl">
-
+                {% if lock == 1 %}
+                {%for Task in ToDoLists %}
+                    <div class="tab">{{Task}}</div>
+                {%endfor%}
+                {%endif%}
             </ul>
         </div>
-    
-        <button class="start" data-toggle="modal" data-target="#exampleModalCenter">Start Test</button>
+{% if lock == 0 %}    
+        <button class="start" data-toggle="modal" data-target="#exampleModalCenter" onclick="WriteToRead()">Start Test</button>
         <button class="Fstart">Force Start</button>
-    
+{%else%} 
+    <form action="/Dashboard/StopTest">
+        <input type="submit" class="Fstart" value="Stop Test">
+    </form>
+        
+{%endif%}   
     
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered ModalStartTest ModalFix" role="document">
@@ -261,7 +311,7 @@
         </div>
     </div>
 
-
+{% if lock == 0 %}   
     <div class="col-lg-3">
         <b>List of Chapters To Read</b>
         <div class="Plotpan border" id="novelCon"><b style="color:rgba(0, 0, 0, 0.4);">Select a Novel To See its chapter...</b></div>
@@ -274,6 +324,14 @@
         </div>
 
     </div>
+{%else%}
+<div class="col-lg-9">
+    <b>Test In Progress</b>
+    <div class="Plotpan border" id="TestContent"><b style="color:rgba(0, 0, 0, 0.4);">
+        {% include 'Dashboard/Runtest.html' %}
+    </b></div>
+{%endif%}
+</div>
 </div>
 <script>
     function BuildPOMS() {
@@ -364,7 +422,44 @@ function AddNovelToList(){
 
     }
 }
-
+function WriteToRead(){
+    lis=document.getElementsByClassName("tab")
+    console.log(lis.length)
+    if (lis.length < 1){
+        console.log("No Novel Selected")
+    }
+    else{
+        var peragraph ="";
+        for(i=0;i<lis.length;i++){
+            var words = lis[i].getElementsByTagName("span");
+            var sentence = "";
+            for(j=0;j<words.length;j++)
+            {
+                if(words[j].textContent !=''){
+                    if( sentence != ''){
+                    sentence =sentence+" "+words[j].textContent;
+                    }
+                    else{
+                        sentence=words[j].textContent;
+                    }
+                }
+            }
+            console.log(sentence)
+            if(peragraph != ''){
+               peragraph=peragraph+"\n"+sentence; 
+            }
+            else{
+               peragraph=sentence; 
+            }
+            //
+        }
+        console.log(peragraph+"check---------");
+        document.getElementById("AllNovels").value=peragraph;
+        console.log(document.getElementById("AllNovels").value)
+        document.getElementById("ToRead").submit();   
+    }
+    
+}
 </script>
 
 {% endblock %}

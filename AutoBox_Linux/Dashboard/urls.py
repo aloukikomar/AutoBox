@@ -14,4 +14,6 @@ urlpatterns = [
     url(r'^Chapter',views.GetChapter , name='GetChapter'),
     url(r'^Page',views.GetPage , name='GetPage'),
 	url(r'^BuildPOM',views.BuildPOM , name='BuildPOM'),
+	url(r'^StartTest',views.StartTest , name='StartTest'),
+	url(r'^StopTest',views.StopTest , name='StopTest')
 ]
