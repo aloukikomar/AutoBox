@@ -6,6 +6,7 @@ from django.http import HttpResponse
 import os,time
 import json
 import multiprocessing
+from BDD import MakePOM 
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 PagePath=dir_path+"/../BDD/Pages/"
@@ -34,15 +35,19 @@ def home(request,*messag):
     TSR=open(dir_path+"/../BDD/tmp/CurrentTSR","r").readline()
     images=os.listdir(dir_path+"/../BDD/Logs/"+TSR+"/Images/")
     images=[ TSR + '/Images/' + s for s in images ]
-    return render(request,'Dashboard/home.html',{'ToDoLists':ToDoLists,'NovelAvailable':NovelAvailable,'lock':lock,'TSR':TSR,'images':images})
+    return render(request,'Dashboard/home.html',{'ToDoLists':ToDoLists,'NovelAvailable':NovelAvailable,'lock':lock,'TSR':TSR})
 
 
-def BuildPOM(request):
-    execfile(dir_path+"/../BDD/MakePOM.py", globals())
-    print(dir_path)
-    TSR=open(dir_path+"/../BDD/tmp/CurrentTSR","r").readline()
-    output=open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"r+").readlines()
-    return render(request,'Dashboard/BuildPOM.html',{'output':output})
+def BuildPOM():
+    MakePOM.MakeLog()
+    allChapters,allPages=MakePOM.ToRead()
+    MakePOM.makeExecutables(allPages)
+    MakePOM.RunFlow()
+    #execfile(dir_path+"/../BDD/MakePOM.py", globals())
+    #print(dir_path)
+    #TSR=open(dir_path+"/../BDD/tmp/CurrentTSR","r").readline()
+    #output=open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"r+").readlines()
+    #return render(request,'Dashboard/BuildPOM.html',{'output':output})
 
 def RunTest(request):
     
@@ -81,6 +86,9 @@ def StartTest(request):
         open(dir_path+"/../BDD/ToRead.txt","w+").write(Cont)
         open(lockPath,"w+").write("started")
         print("Lock Implemented")
+        MainTest=multiprocessing.Process(target=BuildPOM)
+        MainTest.start()
+        time.sleep(3) 
     return redirect("/Dashboard/home/")
 
 def StopTest(request):

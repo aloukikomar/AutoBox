@@ -1,0 +1,24 @@
+
+===|Dev Logs :TSR_1556103216|===============================================
+
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556103216/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for :/html/body/entry/login/div/div[2]/div/form/div[2]/input
+<selenium.webdriver.remote.webelement.WebElement (session="ad9f4b21230dbf181b9b3d187a785a3b", element="0.5240905277719987-1")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556103216/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for :/html/body/entry/login/div/div[2]/div/form/div[3]/input
+<selenium.webdriver.remote.webelement.WebElement (session="ad9f4b21230dbf181b9b3d187a785a3b", element="0.5240905277719987-2")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556103216/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://*[@id='login-button']
+<selenium.webdriver.remote.webelement.WebElement (session="ad9f4b21230dbf181b9b3d187a785a3b", element="0.5240905277719987-3")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556103216/Images/
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556103216/Images/
+FindElement invoked 
+type invoked  :xpath
+Find Element Failed
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556103216/Images/

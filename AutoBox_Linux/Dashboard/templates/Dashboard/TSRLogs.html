@@ -1,13 +1,25 @@
 <style>
 .lines{
 font-size: 15px;
+color: rgb(65, 65, 65);
 }
-
+.line:hover{
+    color: black
+}
+.Failedline{
+    color: rgb(238, 0, 0)
+}
 </style>
 <div>
 {% for line in TSRLogs%}
-<div class="lines">
+{% if "Failed" in line%}
+<div class="lines Failedline">
     {{line}}
 </div>
+{%else%}
+<div class="lines">
+        {{line}}
+    </div>
+{%endif%}
 {%endfor%}
 </div>

@@ -3,9 +3,9 @@ print(time.time())
 sys.path.append("/home/automation/webapps/AutoBox/BDD")
 from bins.Functions import CreateEXE,WriteEXE
 from bins.Execute import MakeFlow,ExecuteFlow,WriteFlow
-ToReadFile=dir_path+"/../BDD/ToRead.txt"
-dir_path = os.path.dirname(os.path.realpath(__file__))
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+ToReadFile=dir_path+"/../BDD/ToRead.txt"
 def RunFlow():
     TSR=open(dir_path+"/..//BDD/tmp/CurrentTSR","r").readline()
     open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n--------------------\nExecute the flow \n--------------------")
@@ -14,7 +14,7 @@ def RunFlow():
         open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n Executing Novel :{}".format(novel))
         novel=open(dir_path+"/../BDD/Novels/{}/ChapterIndex.txt".format(novel),"r").readlines()
         for Chapter in novel:
-            Chapter=Chapter.replace("\n","")
+            Chapter=Chapter.replace("\n","").replace("\r","")
             open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n    |--Executing Chapter:{}\n".format(Chapter))
             Pages=open(dir_path+"/../BDD/Chapters/{}/PageIndex.txt".format(Chapter),"r").readlines()
             MakeFlow(Chapter)
@@ -37,6 +37,9 @@ def MakeLog():
     logBegin=open(dir_path+"/../BDD/Logs/{}/Test.Report".format(LogDir),"w+")
     logBegin.write("\n==========================|Test Report :{}|========================\n".format(LogDir))
     logBegin.close()
+    flow=open(dir_path+"/../BDD/Logs/{}/DevLogs.txt".format(LogDir),"w+")
+    flow.write("\n===|Dev Logs :{}|===============================================\n".format(LogDir))
+    flow.close()
 
 def ReadPage(Pages):
     TSR=open(dir_path+"/../BDD/tmp/CurrentTSR","r").readline()
@@ -60,7 +63,7 @@ def ToRead():
         novel=open(dir_path+"/../BDD/Novels/{}/ChapterIndex.txt".format(novel),"r").readlines()
         novelFlow=novel
         for Chapter in novel:
-            Chapter=Chapter.replace("\n","")
+            Chapter=Chapter.replace("\n","").replace("\r","")
             allChapters.append(Chapter)
             open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n    |--{}\n".format(Chapter))
             Pages=open(dir_path+"/../BDD/Chapters/{}/PageIndex.txt".format(Chapter),"r").readlines()
@@ -83,7 +86,7 @@ def makeExecutables(allPages):
         WriteEXE(lines,POMName)
 
         
-MakeLog()
-allChapters,allPages=ToRead()
-makeExecutables(allPages)
-RunFlow()
+#MakeLog()
+#allChapters,allPages=ToRead()
+#makeExecutables(allPages)
+#RunFlow()

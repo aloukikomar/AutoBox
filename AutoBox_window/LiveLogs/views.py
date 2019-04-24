@@ -45,6 +45,19 @@ def LiveLogFile(request,TSRpath=None):
     path=dir_path+"/../BDD/Logs/"+TSRpath+"/Test.Report"
     out=open(path,"r").readlines()
     return render(request,'Dashboard/TSRLogs.html',{'TSRLogs':out})
+
+def LiveDevLogFile(request,TSRpath=None):
+    print(TSRpath)
+    path=dir_path+"/../BDD/Logs/"+TSRpath+"/DevLogs.txt"
+    out=open(path,"r").readlines()
+    return render(request,'Dashboard/DevLogs.html',{'DevLogs':out})
     #return HttpResponse("<h1>{}</h1>".format(out))
 
+def LiveAdvanceImages(request,TSRpath=None):
+    print(TSRpath)
+    images=os.listdir(dir_path+"/../BDD/Logs/"+TSRpath+"/Images/")
+    images.sort()
+    images=[ TSRpath + '/Images/' + s for s in images ]
+    print(images)
+    return render(request,'Dashboard/AdvanceImageDisplay.html',{'images':images})
 # Create your views here.

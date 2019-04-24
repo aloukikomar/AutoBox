@@ -3,21 +3,31 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common import exceptions
 import time,os
 from selenium.webdriver.chrome.options import Options
+from bins.Execute import DevLogs,loggs
+
 dir_path = os.path.dirname(os.path.realpath(__file__))
 def getpath():
         #print(dir_path)
         TSR=open(dir_path+"/../tmp/CurrentTSR","r").readline()
         paths=dir_path+"/../Logs/{}/Images/".format(TSR)
-        print(paths)
+        DevLogs("getpath invoked and returns :{}".format(paths))
         return paths
         #flow.write("driver=\"\"")
         #flow.close()
 
 def FindElement(driver,variable,types):
-    if types == "xpath":
-        element=driver.find_element_by_xpath(variable)
-        print("find element for {} {}".format(variable,element))
-    return element
+        DevLogs("FindElement invoked ")
+        try:
+                DevLogs("type invoked  :{}".format(types))
+                if types == "xpath":
+                        element=driver.find_element_by_xpath(variable)
+                        DevLogs("Find element for :{}\n{}".format(variable,element))
+                        return element
+                        #print(" {} {}".format(variable,element))
+        except:
+                loggs("Find Element Failed for :{}".format(variable))
+                DevLogs("Find Element Failed")
+                return False
 
 
 def SetDriver(DriverType):
@@ -77,3 +87,16 @@ def Store(element):
 
 def SwitchTab(driver):
         driver.switch_to_window(driver.window_handles[-1])
+
+def HandleAlert(driver,option):
+        try:
+                
+                if option == "positively":
+                        driver.switch_to_alert().accept()
+                else:
+                        driver.switch_to_alert().dismiss()
+                paths=getpath()
+                timestamp=str(str(time.time()).split(".")[0])
+                driver.save_screenshot(paths+timestamp+"HandleAlert.png")
+        except:
+                print("No alerts")

@@ -1,0 +1,19 @@
+<style>
+#console{
+    background-color: black;
+}
+.Dlines{
+font-size: 15px;
+color: aliceblue;
+}
+.Dline:hover{
+    color: white;
+}
+</style>
+<div id=console>
+{% for line in DevLogs%}
+<div class="Dlines">
+    {{line}}
+</div>
+{%endfor%}
+</div>

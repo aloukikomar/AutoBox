@@ -6,6 +6,11 @@ def loggs(message):
     flow.write("\n"+message)
     flow.close()
 
+def DevLogs(message):
+    TSR=open(dir_path+"/../tmp/CurrentTSR","r").readline()
+    flow=open(dir_path+"/../Logs/{}/DevLogs.txt".format(TSR),"a+")
+    flow.write("\n"+message)
+    flow.close()
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 

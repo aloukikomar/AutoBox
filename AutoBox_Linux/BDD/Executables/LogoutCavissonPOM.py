@@ -6,7 +6,7 @@ from bins.Execute import loggs
 
 def main(driver):
     loggs('--------------Running Keyword LookFor')
-    element=SeleniumFunction.FindElement(driver,"//button[@icon='pi pi-caret-down']","xpath")
+    element=SeleniumFunction.FindElement(driver,"//button[@icon='fa-caret-down']","xpath")
     loggs('--------------Running Keyword Click')
     SeleniumFunction.Click(driver,element)
     loggs('--------------Running Keyword LookFor')

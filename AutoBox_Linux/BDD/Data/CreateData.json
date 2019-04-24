@@ -18,7 +18,8 @@
         "PrintContent":"    Comman.PrintContent(\"variable\")",
         "PsudoStore":"    PsudoStore=variable",
         "SwitchTab":"    SeleniumFunction.SwitchTab(driver)",
-        "Wait5":"    Comman.Wait5()"
+        "Wait5":"    Comman.Wait5()",
+        "HandleAlert":"    loggs('--------------Running Keyword HandleAlert')\n    SeleniumFunction.HandleAlert(driver,\"variable\")"
     },
     "pera": {
         "test": {

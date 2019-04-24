@@ -128,6 +128,11 @@ def MainCompiler(Line,POMFIle):
     if "Close" in Line:
         variables.App=''
         newWrite('Static',FileName,'Close')
+
+    if "HandleAlert" in Line:
+        HandleAlert=Line.split("HandleAlert ")[1].split(" ")[0]
+        HandleAlert=MakeRawData(HandleAlert,"Xpath.json")
+        newWrite('Static',FileName,'HandleAlert',HandleAlert)
         
     if "Wait5" in Line:
         newWrite('Static',FileName,'Wait5')
