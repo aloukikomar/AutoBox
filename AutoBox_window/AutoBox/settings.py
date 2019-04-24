@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['127.0.0.1','172.24.1.147']
 INSTALLED_APPS = [
     'Dashboard',
     'Library',
+    'django_live_log',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,4 +125,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.dirname(os.path.realpath(__file__))+'/../BDD/Logs/',
 ]
-
+DLL_FILE = os.path.dirname(os.path.realpath(__file__))+'/../BDD/tmp/tmpLogs.txt' 
+DLL_URL = "/LOG/"

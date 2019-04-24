@@ -19,7 +19,6 @@ def RunFlow():
             Pages=open(dir_path+"/../BDD/Chapters/{}/PageIndex.txt".format(Chapter),"r").readlines()
             MakeFlow(Chapter)
             for page in Pages:
-                open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("    |    |----Executing POM For{}".format(page))
                 page=page.replace("\r","").replace("\n","")
                 WriteFlow(Chapter,page)
             ExecuteFlow(Chapter)

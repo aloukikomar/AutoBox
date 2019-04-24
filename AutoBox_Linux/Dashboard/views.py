@@ -31,7 +31,7 @@ def home(request,*messag):
     else:
         lock=0
     print(ToDoLists)
-    TSR='TSR_1555668924'
+    TSR=open(dir_path+"/../BDD/tmp/CurrentTSR","r").readline()
     images=os.listdir(dir_path+"/../BDD/Logs/"+TSR+"/Images/")
     images=[ TSR + '/Images/' + s for s in images ]
     return render(request,'Dashboard/home.html',{'ToDoLists':ToDoLists,'NovelAvailable':NovelAvailable,'lock':lock,'TSR':TSR,'images':images})

@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^Dashboard/',include('Dashboard.urls')),
     url(r'^Library/',include('Library.urls')),
-    
+    url(r'^LiveLogs/',include('LiveLogs.urls')),
+    url(r'^dll/', include('django_live_log.urls')),
 ]
