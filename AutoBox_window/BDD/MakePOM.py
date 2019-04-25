@@ -10,10 +10,18 @@ def RunFlow():
     TSR=open(dir_path+"/..//BDD/tmp/CurrentTSR","r").readline()
     open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n--------------------\nExecute the flow \n--------------------")
     data=open(ToReadFile,"r").readlines()
+    NovelCount=0
+    NovelSucc=0
+    NovelFail=0
     for novel in data:
+        NovelCount=NovelCount + 1
         open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n Executing Novel :{}".format(novel))
         novel=open(dir_path+"/../BDD/Novels/{}/ChapterIndex.txt".format(novel),"r").readlines()
+        ChapterCount=0
+        ChapterSucc=0
+        ChapterFail=0
         for Chapter in novel:
+            ChapterCount=ChapterCount +1
             Chapter=Chapter.replace("\n","").replace("\r","")
             open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n    |--Executing Chapter:{}\n".format(Chapter))
             Pages=open(dir_path+"/../BDD/Chapters/{}/PageIndex.txt".format(Chapter),"r").readlines()
@@ -21,7 +29,31 @@ def RunFlow():
             for page in Pages:
                 page=page.replace("\r","").replace("\n","")
                 WriteFlow(Chapter,page)
-            ExecuteFlow(Chapter)
+            status=ExecuteFlow(Chapter)
+            if status == True:
+                ChapterSucc=ChapterSucc +1
+                open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n    |--Chapter:{} Pass\n".format(Chapter))
+            else:
+                ChapterFail=ChapterFail +1
+                open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n    |--Chapter:{} Fails\n".format(Chapter))
+        print(ChapterCount,ChapterSucc,ChapterFail)
+        open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n Novel:{}\n Execution Completed".format(novel))
+        open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n======================================================================")
+        open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n Novel Result: Total Chapters:{} Total Succes:{} Total Faliurs:{}\n".format(ChapterCount,ChapterSucc,ChapterFail))
+        open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n======================================================================")
+        try:
+            persentSucc=(ChapterSucc/ChapterCount)*100
+        except:
+            print("error in calculating persentage")
+        if ChapterCount == ChapterSucc:
+            NovelSucc=NovelSucc + 1    
+        else:
+            NovelFail=NovelFail + 1
+    print(NovelCount,NovelSucc,NovelFail)
+    open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n TSR Result: {}\n Execution Completed".format(TSR))
+    open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n======================================================================")
+    open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n TSR Result: Total Novels:{} Total Succes:{} Total Faliurs:{}\n".format(NovelCount,NovelSucc,NovelFail))
+    open(dir_path+"/../BDD/Logs/{}/Test.Report".format(TSR),"a+").write("\n======================================================================") 
 
 def MakeDirs(LogDir):
     os.mkdir( dir_path+"/../BDD/Logs/{}".format(LogDir), 0755 )

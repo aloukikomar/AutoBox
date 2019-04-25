@@ -18,17 +18,19 @@ def MakeFlow(Chapter):
     TSR=open(dir_path+"/../tmp/CurrentTSR","r").readline()
     flow=open(dir_path+"/../Logs/{}/Chapters/{}flow.py".format(TSR,Chapter),"a+")
     flow.write("from bins.Execute import loggs\n")
-    flow.write("driver=\"\"")
+    flow.write("\n\ndef main():\n")
+    flow.write("    driver=\"\"\n    status=True")
     flow.close()
 
 def WriteFlow(Chapter,page):
     TSR=open(dir_path+"/../tmp/CurrentTSR","r").readline()
     flow=open(dir_path+"/../Logs/{}/Chapters/{}flow.py".format(TSR,Chapter),"a+")
-    flow.write("\n\n")
-    flow.write("\nloggs('    |    |----Execution Begins of POM For {}')\n".format(page))
-    flow.write("\nfrom Executables import {}POM\n".format(page))
-    flow.write("status,driver={}POM.main(driver)\n".format(page))
-    flow.write("\nloggs('    |    |----Execution Ends of POM For {}')\n".format(page))
+    flow.write("\n")
+    flow.write("\n    loggs('    |    |----Execution Begins of POM For {}')\n".format(page))
+    flow.write("    from Executables import {}POM\n".format(page))
+    flow.write("    status,driver={}POM.main(driver)\n".format(page))
+    flow.write("    loggs('    |    |----Execution Ends of POM For {}')\n".format(page))
+    flow.write("    if status != True:\n        return False")
     '''flow.write("\nexcept:\n    print('failed in {}')".format(page))'''
     flow.close()
 
@@ -36,6 +38,9 @@ def ExecuteFlow(Chapter):
     TSR=open(dir_path+"/../tmp/CurrentTSR","r").readline()
     shutil.copy(dir_path+"/../Logs/{}/Chapters/{}flow.py".format(TSR,Chapter),dir_path+"/../tmp/flow.py")
     time.sleep(3)
-    execfile(dir_path+"/../tmp/flow.py")
+    from tmp import flow
+    status=flow.main()
+    print(status)
+    #execfile(dir_path+"/../tmp/flow.py")
     
    
