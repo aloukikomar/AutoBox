@@ -4,6 +4,7 @@ from selenium.common import exceptions
 import time,os
 from selenium.webdriver.chrome.options import Options
 from bins.Execute import DevLogs,loggs
+import traceback
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 def getpath():
@@ -22,12 +23,14 @@ def FindElement(driver,variable,types):
                 if types == "xpath":
                         element=driver.find_element_by_xpath(variable)
                         DevLogs("Find element for :{}\n{}".format(variable,element))
-                        return element
+                        status=True
+                        return status,element
                         #print(" {} {}".format(variable,element))
         except:
-                loggs("Find Element Failed for :{}".format(variable))
-                DevLogs("Find Element Failed")
-                return False
+                loggs("\n\nFind Element Failed for :{}\n".format(variable))
+                DevLogs("\n\n\nFind Element Failed :\n{}\n\n\n".format(traceback.format_exc()))
+                element=""
+                return False,element
 
 
 def SetDriver(DriverType):
@@ -52,23 +55,31 @@ def openURL(URL,driver):
     return driver
     
 def SendData(driver,element,Fill):
-        element.send_keys(Fill)
-        paths=getpath()
-        timestamp=str(str(time.time()).split(".")[0])
-        driver.save_screenshot(paths+timestamp+"SendData.png")
+        try:
+                element.send_keys(Fill)
+                paths=getpath()
+                timestamp=str(str(time.time()).split(".")[0])
+                driver.save_screenshot(paths+timestamp+"SendData.png")
+                return True
+        except:
+                return False
 
 def Click(driver,element):
-        time.sleep(1)
-        paths=getpath()
-        timestamp=str(str(time.time()).split(".")[0])
-        driver.save_screenshot(paths+timestamp+"Click.png")
         try:
-                element.click()
-                time.sleep(4)
-                print("Click {}".format(element))
-        except exceptions.StaleElementReferenceException as e:
-                print(e)  
-        time.sleep(7)
+                time.sleep(1)
+                paths=getpath()
+                timestamp=str(str(time.time()).split(".")[0])
+                driver.save_screenshot(paths+timestamp+"Click.png")
+                try:
+                        element.click()
+                        time.sleep(4)
+                        print("Click {}".format(element))
+                except exceptions.StaleElementReferenceException as e:
+                        print(e)  
+                time.sleep(7)
+                return True
+        except:
+                return False
 
 def MoveTo(driver,element):
         hover = ActionChains(driver).move_to_element(element)
@@ -98,5 +109,7 @@ def HandleAlert(driver,option):
                 paths=getpath()
                 timestamp=str(str(time.time()).split(".")[0])
                 driver.save_screenshot(paths+timestamp+"HandleAlert.png")
+                return True
         except:
                 print("No alerts")
+                return False

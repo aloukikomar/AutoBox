@@ -5,24 +5,48 @@ from Core import SeleniumFunction,Comman,Machine,PythonFunction_lib
 from bins.Execute import loggs
 
 def main(driver):
+    status=True
+
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword LookFor')
-    element=SeleniumFunction.FindElement(driver,"//button[@title='Add Group']","xpath")
+    status,element=SeleniumFunction.FindElement(driver,"//button[@title='Add Group']","xpath")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Click')
-    SeleniumFunction.Click(driver,element)
+    status=SeleniumFunction.Click(driver,element)
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword LookFor')
-    element=SeleniumFunction.FindElement(driver,"//input[@name='groupName']","xpath")
+    status,element=SeleniumFunction.FindElement(driver,"//input[@name='groupName']","xpath")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Enter')
-    SeleniumFunction.SendData(driver,element,"G1")
+    status=SeleniumFunction.SendData(driver,element,"G1")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword LookFor')
-    element=SeleniumFunction.FindElement(driver,"//p-dropdown[@name='scriptName']","xpath")
+    status,element=SeleniumFunction.FindElement(driver,"//p-dropdown[@name='scriptName']","xpath")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Click')
-    SeleniumFunction.Click(driver,element)
+    status=SeleniumFunction.Click(driver,element)
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword LookFor')
-    element=SeleniumFunction.FindElement(driver,"//span[text()='AutoBox']","xpath")
+    status,element=SeleniumFunction.FindElement(driver,"//span[text()='AutoBox']","xpath")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Click')
-    SeleniumFunction.Click(driver,element)
+    status=SeleniumFunction.Click(driver,element)
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword LookFor')
-    element=SeleniumFunction.FindElement(driver,"//form[@class='ng-dirty ng-valid ng-touched']//child::footer//child::div//child::button[@label='OK']","xpath")
+    status,element=SeleniumFunction.FindElement(driver,"//form[@class='ng-dirty ng-valid ng-touched']//child::footer//child::div//child::button[@label='OK']","xpath")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Click')
-    SeleniumFunction.Click(driver,element)
-    return driver
+    status=SeleniumFunction.Click(driver,element)
+    if status != True:
+        return status,driver
+    return status,driver

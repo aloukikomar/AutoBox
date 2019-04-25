@@ -9,6 +9,7 @@ def writecode(Fdata,files):
     codefile.write("\n")
     for code in Fdata:    
         codefile.write(code)
+    codefile.write("\n    if status != True:\n        return status,driver")
     
 
 def createVariable(lines,Data):

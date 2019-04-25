@@ -12,6 +12,11 @@ color: aliceblue;
 </style>
 <div id=console>
 {% for line in DevLogs%}
+{%if "Failed" in line %}
+<div>
+   <h3 class="Failedline" >Failure recived:</h3> 
+</div>
+{%endif%}
 <div class="Dlines">
     {{line}}
 </div>

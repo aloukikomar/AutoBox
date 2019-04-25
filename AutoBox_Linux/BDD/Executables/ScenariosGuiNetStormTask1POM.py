@@ -5,24 +5,48 @@ from Core import SeleniumFunction,Comman,Machine,PythonFunction_lib
 from bins.Execute import loggs
 
 def main(driver):
+    status=True
+
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword LookFor')
-    element=SeleniumFunction.FindElement(driver,"//button[@label='Create']","xpath")
+    status,element=SeleniumFunction.FindElement(driver,"//button[@label='Create']","xpath")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Click')
-    SeleniumFunction.Click(driver,element)
+    status=SeleniumFunction.Click(driver,element)
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword LookFor')
-    element=SeleniumFunction.FindElement(driver,"//div[text()='Project ']/parent::div/descendant::p-dropdown[contains(@class,'filterDrop')]","xpath")
+    status,element=SeleniumFunction.FindElement(driver,"//div[text()='Project ']/parent::div/descendant::p-dropdown[contains(@class,'filterDrop')]","xpath")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Click')
-    SeleniumFunction.Click(driver,element)
+    status=SeleniumFunction.Click(driver,element)
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword LookFor')
-    element=SeleniumFunction.FindElement(driver,"//span[text()='default']//parent::li","xpath")
+    status,element=SeleniumFunction.FindElement(driver,"//span[text()='default']//parent::li","xpath")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Click')
-    SeleniumFunction.Click(driver,element)
+    status=SeleniumFunction.Click(driver,element)
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword LookFor')
-    element=SeleniumFunction.FindElement(driver,"//div[text()='Scenario Name ']//following::div//child::input","xpath")
+    status,element=SeleniumFunction.FindElement(driver,"//div[text()='Scenario Name ']//following::div//child::input","xpath")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Enter')
-    SeleniumFunction.SendData(driver,element,"NSAutoBoxBegin")
+    status=SeleniumFunction.SendData(driver,element,"NSAutoBoxBegin")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword LookFor')
-    element=SeleniumFunction.FindElement(driver,"//span[@class='ui-button-icon-left ui-clickable fa fa-fw fa-check']/following-sibling::span[text()='Next']","xpath")
+    status,element=SeleniumFunction.FindElement(driver,"//span[@class='ui-button-icon-left ui-clickable fa fa-fw fa-check']/following-sibling::span[text()='Next']","xpath")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Click')
-    SeleniumFunction.Click(driver,element)
-    return driver
+    status=SeleniumFunction.Click(driver,element)
+    if status != True:
+        return status,driver
+    return status,driver

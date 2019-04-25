@@ -27,7 +27,7 @@ def WriteFlow(Chapter,page):
     flow.write("\n\n")
     flow.write("\nloggs('    |    |----Execution Begins of POM For {}')\n".format(page))
     flow.write("\nfrom Executables import {}POM\n".format(page))
-    flow.write("driver={}POM.main(driver)\n".format(page))
+    flow.write("status,driver={}POM.main(driver)\n".format(page))
     flow.write("\nloggs('    |    |----Execution Ends of POM For {}')\n".format(page))
     '''flow.write("\nexcept:\n    print('failed in {}')".format(page))'''
     flow.close()

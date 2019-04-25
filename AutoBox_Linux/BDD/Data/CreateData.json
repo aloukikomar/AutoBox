@@ -1,13 +1,13 @@
 {
     "line": {
-        "Open"    : "    loggs('--------------Running Keyword Open')\n    driver=Comman.OpenSystem(\"variable\",driver)",
-        "LookFor" : "    loggs('--------------Running Keyword LookFor')\n    element=SeleniumFunction.FindElement(driver,\"variable\",\"xpath\")",
-        "Enter"   : "    loggs('--------------Running Keyword Enter')\n    SeleniumFunction.SendData(driver,element,\"variable\")",
-        "Click"   : "    loggs('--------------Running Keyword Click')\n    SeleniumFunction.Click(driver,element)",
+        "Open"    : "    loggs('--------------Running Keyword Open')\n    status,driver=Comman.OpenSystem(\"variable\",driver)",
+        "LookFor" : "    loggs('--------------Running Keyword LookFor')\n    status,element=SeleniumFunction.FindElement(driver,\"variable\",\"xpath\")",
+        "Enter"   : "    loggs('--------------Running Keyword Enter')\n    status=SeleniumFunction.SendData(driver,element,\"variable\")",
+        "Click"   : "    loggs('--------------Running Keyword Click')\n    status=SeleniumFunction.Click(driver,element)",
         "Variable": "    loggs('--------------Running Keyword Variable')\ntmp",
-        "Run"     : "    loggs('--------------Running Keyword Run')\n    driver=Comman.Driver(\"variable\")",
-        "Close"   : "    loggs('--------------Running Keyword Close')\n    SeleniumFunction.CloseDriver(driver)",
-        "MoveTo"  : "    loggs('--------------Running Keyword MoveTo')\n    SeleniumFunction.MoveTo(driver,element)",
+        "Run"     : "    loggs('--------------Running Keyword Run')\n    status,driver=Comman.Driver(\"variable\")",
+        "Close"   : "    loggs('--------------Running Keyword Close')\n    status=SeleniumFunction.CloseDriver(driver)",
+        "MoveTo"  : "    loggs('--------------Running Keyword MoveTo')\n    status=SeleniumFunction.MoveTo(driver,element)",
         "WriteHtml":"    SeleniumFunction.WriteHtml(driver,element,\"variable\")",
         "include":"    Comman.Wait5()",
         "Bash":"    Machine.BashShell(driver,\"variable\")",
@@ -26,8 +26,8 @@
             "webapplication": "driver=Comman.Driver(\"variable\")",
             "Machine": "Connect=Comman.Driver(\"variable\")"
         },
-        "Start": "import sys\nsys.path.append(\"/home/automation/webapps/AutoBox/BDD\")\nfrom Core import SeleniumFunction,Comman,Machine,PythonFunction_lib\nfrom bins.Execute import loggs\n\ndef main(driver):",
-        "Continue": "import sys\nsys.path.append(\"/home/automation/webapps/AutoBox/BDD\")\nfrom Core import SeleniumFunction,Comman,Machine,PythonFunction_lib\nfrom bins.Execute import loggs\n\ndef main(driver):",
+        "Start": "import sys\nsys.path.append(\"/home/automation/webapps/AutoBox/BDD\")\nfrom Core import SeleniumFunction,Comman,Machine,PythonFunction_lib\nfrom bins.Execute import loggs\n\ndef main(driver):\n    status=True\n",
+        "Continue": "import sys\nsys.path.append(\"/home/automation/webapps/AutoBox/BDD\")\nfrom Core import SeleniumFunction,Comman,Machine,PythonFunction_lib\nfrom bins.Execute import loggs\n\ndef main(driver):\n    status=True\n",
         "":""
     }
 }
