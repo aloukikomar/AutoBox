@@ -1,6 +1,0 @@
-
-===|Dev Logs :TSR_1556113828|===============================================
-
-getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556113828/Images/
-FindElement invoked 
-type invoked  :xpath
