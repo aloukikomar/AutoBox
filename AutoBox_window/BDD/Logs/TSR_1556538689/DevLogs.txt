@@ -1,0 +1,39 @@
+
+===|Dev Logs :TSR_1556538689|===============================================
+
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556538689/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://a[contains(text(),'Login')]
+<selenium.webdriver.remote.webelement.WebElement (session="2dbc7fbadaddba8d59a1b8b7685a6277", element="0.6726916595005847-1")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556538689/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://input[@placeholder='User-Id']
+<selenium.webdriver.remote.webelement.WebElement (session="2dbc7fbadaddba8d59a1b8b7685a6277", element="0.9325752911454825-1")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556538689/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://input[@placeholder='Password']
+<selenium.webdriver.remote.webelement.WebElement (session="2dbc7fbadaddba8d59a1b8b7685a6277", element="0.9325752911454825-2")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556538689/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://button[@id='submit']
+<selenium.webdriver.remote.webelement.WebElement (session="2dbc7fbadaddba8d59a1b8b7685a6277", element="0.9325752911454825-3")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556538689/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://a[contains(text(),'UBUNTU 16')]
+<selenium.webdriver.remote.webelement.WebElement (session="2dbc7fbadaddba8d59a1b8b7685a6277", element="0.11243542769448611-1")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556538689/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for :(//a[@class='accordion-toggle'])[1]
+<selenium.webdriver.remote.webelement.WebElement (session="2dbc7fbadaddba8d59a1b8b7685a6277", element="0.11243542769448611-2")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556538689/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://div[@id='2b']//div[1]//div[1]//table[1]//tbody[1]//tr[3]//td[5]//div[1]//div[1]//button[1]
+<selenium.webdriver.remote.webelement.WebElement (session="2dbc7fbadaddba8d59a1b8b7685a6277", element="0.11243542769448611-3")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556538689/Images/

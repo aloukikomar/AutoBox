@@ -1,0 +1,24 @@
+
+===|Dev Logs :TSR_1556532440|===============================================
+
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556532440/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://a[contains(text(),'Login')]
+<selenium.webdriver.remote.webelement.WebElement (session="4534fc4fa428268d31582fbbb2fee70a", element="0.17843291531005456-1")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556532440/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://input[@placeholder='User-Id']
+<selenium.webdriver.remote.webelement.WebElement (session="4534fc4fa428268d31582fbbb2fee70a", element="0.2622848485779903-1")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556532440/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://input[@placeholder='Password']
+<selenium.webdriver.remote.webelement.WebElement (session="4534fc4fa428268d31582fbbb2fee70a", element="0.2622848485779903-2")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556532440/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://button[@id='submit']
+<selenium.webdriver.remote.webelement.WebElement (session="4534fc4fa428268d31582fbbb2fee70a", element="0.2622848485779903-3")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556532440/Images/

@@ -1,0 +1,28 @@
+
+===|Dev Logs :TSR_1556881989|===============================================
+
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556881989/Images/
+FindElement invoked 
+type invoked  :xpath
+
+
+
+Find Element Failed :
+Traceback (most recent call last):
+  File "/home/automation/webapps/AutoBox/BDD/Core/SeleniumFunction.py", line 24, in FindElement
+    element=driver.find_element_by_xpath(variable)
+  File "/usr/local/lib/python2.7/dist-packages/selenium/webdriver/remote/webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "/usr/local/lib/python2.7/dist-packages/selenium/webdriver/remote/webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "/usr/local/lib/python2.7/dist-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/usr/local/lib/python2.7/dist-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/entry/login/div/div[2]/div/form/div[2]/input"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Linux 4.15.0-47-generic x86_64)
+
+
+
+

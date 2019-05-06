@@ -34,13 +34,23 @@ def WriteFlow(Chapter,page):
     '''flow.write("\nexcept:\n    print('failed in {}')".format(page))'''
     flow.close()
 
+def FinishWritingFlow(Chapter):
+    TSR=open(dir_path+"/../tmp/CurrentTSR","r").readline()
+    flow=open(dir_path+"/../Logs/{}/Chapters/{}flow.py".format(TSR,Chapter),"a+")
+    flow.write("\n")
+    flow.write("\n    return status")
+    flow.close()
+
 def ExecuteFlow(Chapter):
     TSR=open(dir_path+"/../tmp/CurrentTSR","r").readline()
-    shutil.copy(dir_path+"/../Logs/{}/Chapters/{}flow.py".format(TSR,Chapter),dir_path+"/../tmp/flow.py")
+    shutil.copy(dir_path+"/../Logs/{}/Chapters/{}flow.py".format(TSR,Chapter),dir_path+"/../tmp/{}flow.py".format(Chapter))
     time.sleep(3)
-    from tmp import flow
+    exec("from tmp import {}flow as flow".format(Chapter))
     status=flow.main()
     print(status)
+    os.remove(dir_path+"/../tmp/{}flow.py".format(Chapter))
+    os.remove(dir_path+"/../tmp/{}flow.pyc".format(Chapter))
+    return status
     #execfile(dir_path+"/../tmp/flow.py")
     
    

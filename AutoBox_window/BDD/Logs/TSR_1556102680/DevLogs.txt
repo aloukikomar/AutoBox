@@ -1,0 +1,54 @@
+
+===|Dev Logs :TSR_1556102680|===============================================
+
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for :/html/body/entry/login/div/div[2]/div/form/div[2]/input
+<selenium.webdriver.remote.webelement.WebElement (session="bfcf0d6e8e84e5d18a986b72d13e8aa5", element="0.7231759834973015-1")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for :/html/body/entry/login/div/div[2]/div/form/div[3]/input
+<selenium.webdriver.remote.webelement.WebElement (session="bfcf0d6e8e84e5d18a986b72d13e8aa5", element="0.7231759834973015-2")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://*[@id='login-button']
+<selenium.webdriver.remote.webelement.WebElement (session="bfcf0d6e8e84e5d18a986b72d13e8aa5", element="0.7231759834973015-3")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://i[@class='icon produi-icon-scenario']//parent::span//parent::button
+<selenium.webdriver.remote.webelement.WebElement (session="bfcf0d6e8e84e5d18a986b72d13e8aa5", element="0.7231759834973015-4")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://span[text()='Scenarios']//parent::a
+<selenium.webdriver.remote.webelement.WebElement (session="bfcf0d6e8e84e5d18a986b72d13e8aa5", element="0.7231759834973015-5")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://button[@label='Create']
+<selenium.webdriver.remote.webelement.WebElement (session="bfcf0d6e8e84e5d18a986b72d13e8aa5", element="0.7231759834973015-6")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://div[text()='Project ']/parent::div/descendant::p-dropdown[contains(@class,'filterDrop')]
+<selenium.webdriver.remote.webelement.WebElement (session="bfcf0d6e8e84e5d18a986b72d13e8aa5", element="0.7231759834973015-7")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://span[text()='default']//parent::li
+<selenium.webdriver.remote.webelement.WebElement (session="bfcf0d6e8e84e5d18a986b72d13e8aa5", element="0.7231759834973015-8")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for ://div[text()='Scenario Name ']//following::div//child::input
+<selenium.webdriver.remote.webelement.WebElement (session="bfcf0d6e8e84e5d18a986b72d13e8aa5", element="0.7231759834973015-9")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/
+FindElement invoked 
+type invoked  :xpath
+Find Element Failed
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556102680/Images/

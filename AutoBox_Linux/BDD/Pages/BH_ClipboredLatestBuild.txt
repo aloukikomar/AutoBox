@@ -1,0 +1,5 @@
+Continue
+LookFor Tab_U16 And Click
+LookFor Top_Build_tab And Click
+LookFor ClipBoaredIcon And Click
+Store @CpFromClipboard() As link

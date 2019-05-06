@@ -10,7 +10,7 @@
         "SubProject_All_Option": "//div[text()='SubProject']/parent::div/descendant::p-dropdown[contains(@class,'filterDrop')]//ul//span[text()='default']",
         "SearchField": "//div[text()='Scenario Name']/parent::div/descendant::input",
         "DropDownOptionScenarios": "//span[text()='Scenarios']//parent::a",
-        "UserDropDown": "//button[@icon='fa-caret-down']",
+        "UserDropDown": "//button[@icon='pi pi-caret-down']",
         "LogOut":"//span[text()='Logout']//parent::a",
         "CreateButton": "//button[@label='Create']",
         "ProjectDropOption":"//div[text()='Project ']/parent::div/descendant::p-dropdown[contains(@class,'filterDrop')]",
@@ -86,5 +86,15 @@
         "Last12hrs":"//label[text()='Overview']/parent::span/child::ul/child::li[text()='Last 12 Hours']",
         "EditButton":"//i[@class='fa fa-pencil']",
         "Advanced":"//a[text()='Advanced']"
+    },
+    "BuildHub":{
+        "Login":"//a[contains(text(),'Login')]",
+        "UserName":"//input[@placeholder='User-Id']",
+        "UserPassword":"//input[@placeholder='Password']",
+        "Submit":"//button[@id='submit']",
+        "Tab_U16":"//a[contains(text(),'UBUNTU 16')]",
+        "Top_Build_tab":"(//a[@class='accordion-toggle'])[1]",
+        "ClipBoaredIcon":"//div[@id='2b']//div[1]//div[1]//table[1]//tbody[1]//tr[3]//td[5]//div[1]//div[1]//button[1]",
+        "":""
     }
 }

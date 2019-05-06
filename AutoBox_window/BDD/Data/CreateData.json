@@ -12,7 +12,7 @@
         "include":"    Comman.Wait5()",
         "Bash":"    Machine.BashShell(driver,\"variable\")",
         "StoreText":"   Selenium.Store(element)",
-        "Store":"    Comman.Store(\"variable\")",
+        "Store":"    loggs('--------------Running Keyword MoveTo')\n    status=Comman.Store(\"variable\")",
         "Perform":"    Machine.perform(driver,\"variable\")",
         "Upload":"    Machine.UploadFile(\"variable\")",
         "PrintContent":"    Comman.PrintContent(\"variable\")",

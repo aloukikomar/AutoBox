@@ -52,13 +52,19 @@
     .Content {
         font-size: 20px;
     }
+    .InpDrop{
+        font-size: 15px;
+        width: 70%;
+        padding: 1%;
+        margin: 1%;
+    }
 
     .InpDrops {
         font-size: 15px;
-        width: 55%;
+        width: 50%;
         padding: 1%;
         margin: 1%;
-        height: 20px;
+        
     }
 
     .write {
@@ -77,6 +83,10 @@
     border: 0px;
     position: fixed;
     }
+    td {
+        font-size: 18px;
+        margin: 2%;
+    }
 </style>
 
 
@@ -91,20 +101,16 @@
                 <tr>
                     <td>
                         Action:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input placeholder="Select Action" id="ActionInput" class="drop InpDrops" name="ActionInput"
-                            list="ActionInputList" onchange="toproceed()">
-                        <datalist id="ActionInputList">
-                            <option value="Start">
-                            <option value="LooKFor">
-                                <!--  {% for names in listofreaders%}
-                        <option value="{{names}}">
-                        {%endfor%}-->
-                        </datalist>
+                        <select placeholder="Select Action" id="ActionInput" class="drop InpDrops" name="ActionInput" onchange="toproceed()">
+                        {%for keyword in keylist%}
+                            <option class="drop InpDrops">{{keyword}}</option>
+                        {%endfor%}
+                        </select>
                     </td>
                     <td>
                         <span class="hides" id="MainData">
                             Data:
-                            <input placeholder="Enter Values" id="DataMain" class="drop InpDrops" name="DataMain"
+                            <input placeholder="Enter Values" id="DataMain" class="drop InpDrop" name="DataMain"
                                 list="DataMainList">
                             <datalist id="DataMainList">
                                 <option value="None">
@@ -122,20 +128,17 @@
                     <td>
                         <div class="hides" id="step2">
                             Sub Action:
-                            <input placeholder="Select Sub Action" id="SubActionInput" class="drop InpDrops"
-                                name="SubActionInput" list="SubActionInputList">
-                            <datalist id="SubActionInputList">
-                                <option value="Click">
-                                    <!--  {% for names in listofreaders%}
-            <option value="{{names}}">
-            {%endfor%}-->
-                            </datalist>
+                            <select placeholder="Select Sub Action" id="SubActionInput" class="drop InpDrops" name="SubActionInput">
+                                {%for keyword in Subkeylist%}
+                                <option class="drop InpDrops">{{keyword}}</option>
+                            {%endfor%}
+                            </select>
                         </div>
                     </td>
                     <td>
                             <span class="hides" id="SubData">
                         Data:
-                        <input placeholder="Enter Values" id="DataSub" class=" InpDrops" name="DataSub"
+                        <input placeholder="Enter Values" id="DataSub" class=" InpDrop" name="DataSub"
                             list="DataSubList">
                         <datalist id="DataSubList">
                             <option value="None">

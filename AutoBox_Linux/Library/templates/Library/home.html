@@ -124,6 +124,7 @@
     .Libpanel {
         margin: 2%;
         height: 450px;
+        margin-bottom: 0px;
     }
     
     .border {
@@ -312,11 +313,17 @@ Somthing went wrong
     function toproceed() {
     var x = document.getElementById("ActionInput").value;
     console.log(x+"works");
-    if (x != "Start") {
+    var keywords = ["Start", "Continue", "Close","SwitchTab",];
+    var key2 = ["Include","Run","Open"]
+    var subkey= ['LookFor']
+    if (subkey.includes(x)) {
         document.getElementById("step2").classList.remove("hides");
             document.getElementById("MainData").classList.remove("hides");
             document.getElementById("SubData").classList.remove("hides");
     } else {
+        if (key2.includes(x)){
+            document.getElementById("MainData").classList.remove("hides"); 
+        }
         if (document.getElementById("step2").classList.contains("hides")){
                 console.log("No need to add");
             }    
@@ -664,6 +671,31 @@ function WritePage(){
         document.getElementById("NovelContenthidden").value=peragraph;
         document.getElementById("Novelform").submit();
     }
+    }
+    function fetchdata(filename){
+        var urldata = "/Library/fetchdata/"+filename;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("Dataview").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", urldata, true);
+        xhttp.send();
+    }
+    function fetchkey(keyname){
+        var urldata = "/Library/fetchkey/"+keyname;
+        var xhttp = new XMLHttpRequest();
+        var elem2 = document.createElement('div');
+        document.getElementById(keyname).appendChild(elem2);
+        elem2.setAttribute("class", "Chaptercontentlist");
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(keyname).innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", urldata, true);
+        xhttp.send();
     }
 </script>
 </script>

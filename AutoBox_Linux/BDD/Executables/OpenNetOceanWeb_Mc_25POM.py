@@ -5,8 +5,16 @@ from Core import SeleniumFunction,Comman,Machine,PythonFunction_lib
 from bins.Execute import loggs
 
 def main(driver):
+    status=True
+
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Run')
-    driver=Comman.Driver("Webapp:Chrome")
+    status,driver=Comman.Driver("Webapp:Chrome")
+    if status != True:
+        return status,driver
     loggs('--------------Running Keyword Open')
-    driver=Comman.OpenSystem("Web|http://10.10.30.25:8005",driver)
-    return driver
+    status,driver=Comman.OpenSystem("Web|http://10.10.30.25:8005",driver)
+    if status != True:
+        return status,driver
+    return status,driver

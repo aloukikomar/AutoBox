@@ -10,7 +10,7 @@ def main(driver):
     if status != True:
         return status,driver
     loggs('--------------Running Keyword LookFor')
-    status,element=SeleniumFunction.FindElement(driver,"//button[@icon='fa-caret-down']","xpath")
+    status,element=SeleniumFunction.FindElement(driver,"//button[@icon='pi pi-caret-down']","xpath")
     if status != True:
         return status,driver
     loggs('--------------Running Keyword Click')

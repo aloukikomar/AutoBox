@@ -2,7 +2,7 @@ import os,sys,time
 print(time.time())
 sys.path.append("/home/automation/webapps/AutoBox/BDD")
 from bins.Functions import CreateEXE,WriteEXE
-from bins.Execute import MakeFlow,ExecuteFlow,WriteFlow
+from bins.Execute import MakeFlow,ExecuteFlow,WriteFlow,FinishWritingFlow
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 ToReadFile=dir_path+"/../BDD/ToRead.txt"
@@ -29,6 +29,7 @@ def RunFlow():
             for page in Pages:
                 page=page.replace("\r","").replace("\n","")
                 WriteFlow(Chapter,page)
+            FinishWritingFlow(Chapter)
             status=ExecuteFlow(Chapter)
             if status == True:
                 ChapterSucc=ChapterSucc +1
@@ -72,6 +73,7 @@ def MakeLog():
     flow=open(dir_path+"/../BDD/Logs/{}/DevLogs.txt".format(LogDir),"w+")
     flow.write("\n===|Dev Logs :{}|===============================================\n".format(LogDir))
     flow.close()
+    open(dir_path+'/../BDD/tmp/Variables.json', 'w+').write("")
 
 def ReadPage(Pages):
     TSR=open(dir_path+"/../BDD/tmp/CurrentTSR","r").readline()

@@ -17,6 +17,7 @@ def Driver(TypeD):
         status=True
         return status,driver
     except:
+        print("crashed")
         status=False
         driver=""
         return status,driver

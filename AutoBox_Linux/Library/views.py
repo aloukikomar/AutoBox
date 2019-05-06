@@ -5,11 +5,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import os
 from django.shortcuts import redirect
+import json
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 PagePath=dir_path+"/../BDD/Pages/"
 ChapterPath=dir_path+"/../BDD/Chapters/"
 NovelPath=dir_path+"/../BDD/Novels/"
+DataPath=dir_path+"/../BDD/Data/"
 
 PageList=os.listdir(PagePath)
 
@@ -26,7 +28,9 @@ def home(request):
 	filetoopen=open(path,"r")
 	outputfile=filetoopen.readlines()
 	PageList=os.listdir(PagePath)
-	return render(request,'Library/home.html',{'filedata':filedata,'outputfile':outputfile,'PageList':PageList,'ChapterAvailable':ChapterAvailable,'NovelAvailable':NovelAvailable})
+	glossarylist=os.listdir(DataPath)
+	glossarylist=[ s.replace(".json","") for s in glossarylist ]
+	return render(request,'Library/home.html',{'glossarylist':glossarylist,'filedata':filedata,'outputfile':outputfile,'PageList':PageList,'ChapterAvailable':ChapterAvailable,'NovelAvailable':NovelAvailable})
 
 def AddNovelForm(request):
 	ChapterAvailable=os.listdir(ChapterPath)
@@ -43,9 +47,13 @@ def AddChapterForm(request):
 	return render(request,'Library/AddChapters.html',{'ChapterAvailable':ChapterAvailable,'PageListCurrent':PageListCurrent})
 
 def AddPageForm(request):
-    	ChapterAvailable=os.listdir(ChapterPath)
-    	print(ChapterAvailable)
-    	return render(request,'Library/AddPage.html',{'ChapterAvailable':ChapterAvailable})
+		ChapterAvailable=os.listdir(ChapterPath)
+		print(ChapterAvailable)
+		keylist=['Start','Continue','Include','Close','SwitchTab','LookFor','Run','Open','Wait5','MoveTo','Store','PrintContent','HandleAlert']
+		keylist.sort()
+		Subkeylist=['Enter','WriteHtml','Click']
+		Subkeylist.sort()
+		return render(request,'Library/AddPage.html',{'Subkeylist':Subkeylist,'keylist':keylist,'ChapterAvailable':ChapterAvailable})
 # Create your views here.
 def ADDPAGE(request):
 	if request.method =='POST':
@@ -81,3 +89,19 @@ def ADDNOVEL(request):
 		p.write(Contents)
 		p.close()
         return redirect("/Library/home/")
+
+def fetchdata(request,filename):
+	try:
+		with open(DataPath+filename+".json") as json_file:
+			Env=json.load(json_file)
+			Env=Env.keys()
+		with open(DataPath+filename+".json") as json_file2:	
+			data = json_file2.readlines()
+			print(data)
+			data='\n'.join(data).replace("{","\n{").replace("}","}\n").split("\n")
+			data=[ s.replace("{","\n{\n").replace("}","\n}\n") for s in data ]
+			#data = json.load(json_file)
+	except:
+		data ="Error in opening the file"
+		Env="failed to find env create a new one"
+	return render(request,'Library/DisplayedData.html',{'data':data,'Env':Env,'file':filename})

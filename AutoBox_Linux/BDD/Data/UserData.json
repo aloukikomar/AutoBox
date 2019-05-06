@@ -72,4 +72,11 @@
             "it": "",
             "ScenarioName": "ToolBox_NS"
         }
+        ,
+        "BuildHub":{
+            "type": "Web",
+            "username": "cavisson",
+            "password": "cavisson",
+            "url": "http://10.10.30.16"
+        }
 }

@@ -13,5 +13,6 @@ urlpatterns = [
 	url(r'^ADDPAGE',views.ADDPAGE , name='ADDPAGE'),
 	url(r'^ADDCHAPTER',views.ADDCHAPTER , name='ADDCHAPTER'),
 	url(r'^ADDNOVEL',views.ADDNOVEL, name='ADDNOVEL'),
+	url(r'^fetchdata/(?P<filename>\w+)/',views.fetchdata, name='fetchdata'),
 	url(r'^home',views.home , name='home')
 ]

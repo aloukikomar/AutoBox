@@ -1,0 +1,11 @@
+
+===|Dev Logs :TSR_1556114201|===============================================
+
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556114201/Images/
+FindElement invoked 
+type invoked  :xpath
+Find element for :/html/body/entry/login/div/div[2]/div/form/div[2]/input
+<selenium.webdriver.remote.webelement.WebElement (session="7fc798fd7de096d24640500f81815b6b", element="0.4709480886397168-1")>
+getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556114201/Images/
+FindElement invoked 
+type invoked  :xpath

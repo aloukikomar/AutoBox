@@ -1,0 +1,112 @@
+<style>
+  #DDisplay {
+    background-color: #222;
+    color: white;
+    font-size: 13px;
+    overflow: auto;
+    height: 55%;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .sky {
+    color: aqua;
+  }
+
+  .sub {
+    padding-left: 5%;
+  }
+
+  .line {
+    padding: 0%;
+    border: none;
+  }
+
+  #Dataform {
+    font-size: 15px;
+    padding: 1%;
+    width: 100%;
+    height: 40%;
+  }
+  .padding1{
+    padding: 1%;
+  }
+</style>
+<div id="DDisplay">
+  {%for line in data %}
+  {% if "" != line %}
+  <div>
+    {% if ":" in line %}
+    <span class="line"><span class="sub">{{line}}</span></span>
+    {%else%}
+    <span class="line sky">
+      {{line}}
+    </span>
+    {%endif%}
+  </div>
+  {%endif%}
+  {%endfor%}
+
+</div>
+<div id="Dataform">
+  <h3>Edit file</h3>
+  <hr>
+  {%if file == "Settings" or file == "CreateData" %}
+  <h1>
+    Admin Access Only
+  </h1>
+  {%else%}
+  <div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+          aria-controls="v-pills-home" aria-selected="true">Add Enviornment</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+          aria-controls="v-pills-profile" aria-selected="false">Edit Enviornment</a>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <form>
+            Enviornment Name : <input type="text" placeholder="" id="EnvName">
+          </form>
+        </div>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+          <form>
+            <table>
+              <tr>
+                <td class="padding1">
+                  Enviornment :<select id="EnvInp">
+                    {% for EnvI in Env %}
+                    <option>
+                      {{EnvI}}
+                    </option>
+                    {%endfor%}
+                  </select>
+                </td>
+              </tr>
+              <tr >
+                <td class="padding1">
+                  Key :
+                  <input placeholder="" id="Key" class=" InpDrop" name="Key" list="KeyList">
+                  <datalist id="DataSubList">
+                    <option value="None">
+                      <!--  {% for names in listofreaders%}
+      <option value="{{names}}">
+      {%endfor%}-->
+                  </datalist>
+
+                </td>
+                <td class="padding1">
+                  Value : <input type="text" placeholder="" id="EnvName">
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%endif%}
+</div>
