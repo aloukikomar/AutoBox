@@ -1,4 +1,0 @@
-
-===|Dev Logs :TSR_1556531955|===============================================
-
-getpath invoked and returns :/home/automation/webapps/AutoBox/BDD/Core/../Logs/TSR_1556531955/Images/
